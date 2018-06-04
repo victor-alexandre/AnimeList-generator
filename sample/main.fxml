@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane prefHeight="473.0" prefWidth="623.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
+   <children>
+      <Button fx:id="exitbutton" layoutX="229.0" layoutY="255.0" mnemonicParsing="false" onAction="#callexit" prefHeight="25.0" prefWidth="150.0" text="Exit" />
+      <Button fx:id="nextpane" layoutX="203.0" layoutY="167.0" mnemonicParsing="false" onAction="#callnextpane" prefHeight="25.0" prefWidth="218.0" text="nextpane" />
+      <Pane fx:id="pane2" layoutX="167.0" layoutY="62.0" prefHeight="473.0" prefWidth="623.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="473.0" fitWidth="623.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagens/1.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="back" layoutX="132.0" layoutY="440.0" mnemonicParsing="false" onAction="#callbackpane" prefHeight="25.0" prefWidth="169.0" text="back" />
+         </children>
+      </Pane>
+      <MenuBar layoutX="1.0" layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Button fx:id="button" layoutX="73.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="25.0" prefWidth="424.0" text="Change Scene" />
+   </children>
+</AnchorPane>
