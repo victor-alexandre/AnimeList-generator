@@ -14,7 +14,7 @@ import java.io.IOException;
 public class MainController {
     @FXML
     Button button = new Button();
-
+    int i = 1;
 
     @FXML
     Pane pane2;
