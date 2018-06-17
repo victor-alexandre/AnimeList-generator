@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Janela1Controller">
+   <children>
+      <MenuBar layoutX="69.0" AnchorPane.bottomAnchor="444.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#about" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ImageView fitHeight="556.0" fitWidth="845.0" layoutX="-72.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-4.01666259765625" AnchorPane.leftAnchor="-72.0" AnchorPane.rightAnchor="-73.0" AnchorPane.topAnchor="28.0">
+         <image>
+            <Image url="@imagens/Konachan.com%20-%20256427%20sample.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="#f50000" layoutX="48.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Anime Ranking List" textAlignment="CENTER" wrappingWidth="608.7294921875">
+         <font>
+            <Font name="EB Garamond 08 Regular" size="54.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

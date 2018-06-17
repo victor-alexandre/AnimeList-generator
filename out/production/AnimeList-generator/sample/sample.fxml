@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="692.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#enterAbout" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <AnchorPane fx:id="pane2" prefHeight="514.0" prefWidth="692.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <ImageView fitHeight="546.0" fitWidth="692.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@imagens/1.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="251.0" layoutY="352.0" mnemonicParsing="false" onAction="#switchScene2" opacity="0.89" prefHeight="54.0" prefWidth="168.0" style="-fx-background-color: pink;" text="Creat New List" textFill="#ff0048" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="273.0" AnchorPane.topAnchor="352.0">
+               <font>
+                  <Font name="KozMinPro-Bold" size="19.0" />
+               </font>
+            </Button>
+            <Text fill="#e80a0a" layoutX="4.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the RankingList" wrappingWidth="692.0">
+               <font>
+                  <Font name="Noto Sans CJK KR Black" size="48.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pane3" prefHeight="514.0" prefWidth="692.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <ImageView fitHeight="489.0" fitWidth="699.0" layoutX="-4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@imagens/1.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="281.0" layoutY="317.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="168.0" style="-fx-background-color: pink;" text="Username" textFill="#ff0048" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="273.0" AnchorPane.topAnchor="352.0">
+               <font>
+                  <Font name="KozMinPro-Bold" size="21.0" />
+               </font>
+            </Button>
+            <Button layoutX="585.0" layoutY="441.0" mnemonicParsing="false" onAction="#switchScene3" prefHeight="38.0" prefWidth="93.0" style="-fx-background-color: pink;" text="Next" textFill="#ff0048">
+               <font>
+                  <Font name="KozMinPro-Bold" size="18.0" />
+               </font>
+            </Button>
+            <TextField fx:id="usernamefield" layoutX="228.0" layoutY="411.0" opacity="0.9" prefHeight="25.0" prefWidth="215.0" promptText="type your username here" style="-fx-background-color: pink;">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <Button layoutX="14.0" layoutY="441.0" mnemonicParsing="false" onAction="#switchScene1" prefHeight="38.0" prefWidth="93.0" style="-fx-background-color: pink;" text="Back" textFill="#ff0048">
+               <font>
+                  <Font name="KozMinPro-Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pane4" prefHeight="514.0" prefWidth="692.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <Text layoutX="172.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time: Um zoobumafu und eine trap lover" wrappingWidth="347.7294921875">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Text>
+            <Button layoutX="36.0" layoutY="398.0" mnemonicParsing="false" onAction="#exitAbout" prefHeight="54.0" prefWidth="110.0" text="Back" />
+         </children></AnchorPane>
+      <SplitPane fx:id="splitpane1" dividerPositions="0.2813141683778234" layoutX="225.0" layoutY="186.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="220.0" prefWidth="690.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="15.0" prefHeight="17.0" prefWidth="43.0" text="Name" />
+                  <Label layoutX="13.0" layoutY="44.0" text="Seasons" />
+                  <Label layoutX="12.0" layoutY="73.0" prefHeight="17.0" prefWidth="71.0" text="Episodes" />
+                  <Label layoutX="11.0" layoutY="102.0" prefHeight="17.0" prefWidth="43.0" text="Score" />
+                  <TextField layoutX="81.0" layoutY="11.0" />
+                  <TextField layoutX="82.0" layoutY="69.0" />
+                  <TextField layoutX="81.0" layoutY="99.0" />
+                  <TextField layoutX="81.0" layoutY="40.0" />
+                  <Button layoutX="265.0" layoutY="12.0" mnemonicParsing="false" opacity="0.96" prefHeight="26.0" prefWidth="133.0" style="-fx-background-color: #08ff6f;" text="Add in List">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Fill all the fields to  Add in List" />
+                     </tooltip>
+                  </Button>
+                  <Button layoutX="264.0" layoutY="54.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" style="-fx-background-color: #ff2549;" text="Remove of List">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Fill only the name field to Remove" />
+                     </tooltip>
+                  </Button>
+                  <Button layoutX="263.0" layoutY="98.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" style="-fx-background-color: #355dff;" text="Generate List">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Creates an HTML file with the items of the table below" />
+                     </tooltip>
+                  </Button>
+                  <Label layoutX="498.0" layoutY="11.0" prefHeight="25.0" prefWidth="126.0" text="Choose Theme" />
+                  <CheckBox layoutX="444.0" layoutY="44.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="61.0" text="Dark" />
+                  <CheckBox layoutX="514.0" layoutY="44.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="71.0" text="Happy" />
+                  <CheckBox layoutX="606.0" layoutY="44.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="71.0" text="HU3BR" />
+                  <Label fx:id="visualfeedback" layoutX="440.0" layoutY="101.0" prefHeight="25.0" prefWidth="227.0" text="Visual Feedback will appear here!!" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TableView layoutY="64.0" prefHeight="280.0" prefWidth="690.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn prefWidth="73.0" text="Rank" />
+                      <TableColumn prefWidth="211.0" text="Anime" />
+                        <TableColumn prefWidth="172.0" text="Seasons" />
+                        <TableColumn prefWidth="126.0" text="Episodes" />
+                        <TableColumn prefWidth="107.0" text="Score" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
