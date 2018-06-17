@@ -1,0 +1,53 @@
+/* Fonts from Google Fonts - more at https://fonts.google.com */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
+
+
+table {
+    font-family: arial, sans-serif;
+    font-weight: 600;
+    border-collapse: collapse;
+    border-color: gray;
+    border-width: thick;
+    width: 53%;
+    color:  #5F9EA0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+td, th {
+   //background-color:  #2F4F4F;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 10px;
+
+}
+
+tr:hover{
+    background-color: lightblue;
+    cursor: pointer;
+}                
+
+/*
+tr:nth-child(even) {
+    background-color:  #A9A9A9;
+}
+*/
+
+body {
+  background-attachment: fixed !important;
+
+  background-position: left top; 
+  //background-image: url("Konachan.com - 265452 sample.jpg");
+  background-image: url("Konachan.com - 264691 sample.jpg");
+  //background-image: url("Konachan.com - 265456 sample.jpg");
+  font-family: "Open Sans", sans-serif;
+  padding: 5px 25px;
+  font-size: 18px;
+  margin: 0;
+  color:  #00FA9A;
+}
+
+h1 {
+  font-family: "Merriweather", serif;
+  font-size: 32px;
+}
