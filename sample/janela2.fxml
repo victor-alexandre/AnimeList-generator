@@ -22,7 +22,7 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem mnemonicParsing="false" onAction="#changeUsername" text="Change Username" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
@@ -42,7 +42,13 @@
             <Font name="EB Garamond 08 Regular" size="54.0" />
          </font>
       </Text>
-      <TextField fx:id="SATANAS" layoutX="219.0" layoutY="420.0" prefHeight="26.0" prefWidth="206.0" promptText="Types your username here" />
-      <Button layoutX="569.0" layoutY="450.0" mnemonicParsing="false" onAction="#switchwindow" prefHeight="26.0" prefWidth="93.0" text="Next" />
+      <TextField fx:id="SATANAS" layoutX="219.0" layoutY="420.0" prefHeight="26.0" prefWidth="206.0" promptText="Types your username">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></TextField>
+      <Button layoutX="569.0" layoutY="450.0" mnemonicParsing="false" onAction="#switchwindow" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: #ccccb3;" text="Next" textFill="#f50000">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
     </children>
 </AnchorPane>

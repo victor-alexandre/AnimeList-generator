@@ -1,8 +1,82 @@
 package sample;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Anime {
-    String name;
+/*    String name;
     int episodes;
     int seasons;
     double score;
+*/
+
+    SimpleStringProperty name;
+    SimpleIntegerProperty episodes;
+    SimpleIntegerProperty seasons;
+    SimpleDoubleProperty score;
+    static SimpleIntegerProperty rank;
+
+    public Anime(String name, int episodes, int seasons, double score) {
+        this.name = new SimpleStringProperty(name);
+        this.episodes = new SimpleIntegerProperty(episodes);
+        this.seasons = new SimpleIntegerProperty(seasons);
+        this.score = new SimpleDoubleProperty(score);
+       // this.rank = new SimpleIntegerProperty(getRank()+1);
+    }
+
+    /*   public Anime(String name, int episodes, int seasons, double score) {
+            this.name = name;
+            this.episodes = episodes;
+            this.seasons = seasons;
+            this.score = score;
+        }
+    */
+
+    public String getName() {
+        return name.get();
+    }
+
+
+    public void setName(String name) {
+        this.name = new SimpleStringProperty(name);
+    }
+
+
+    public int getEpisodes() {
+        return episodes.get();
+    }
+
+    public void setEpisodes(int episodes) {
+        this.episodes = new SimpleIntegerProperty(episodes);
+    }
+
+    public int getSeasons() {
+        return seasons.get();
+    }
+
+    public void setSeasons(int seasons) {
+        this.seasons = new SimpleIntegerProperty(seasons);
+    }
+
+    public double getScore() {
+        return score.get();
+    }
+
+    public void setScore(double score) {
+        this.score = new SimpleDoubleProperty(score);
+    }
+
+    public int getRank() {
+        return rank.get();
+    }
+
+    public void setRank(int rank) {
+        this.rank = new SimpleIntegerProperty(rank);
+    }
+
+    @Override
+    public String toString() {
+        return "Anime: " + name + "\nepisodes: " + episodes + "\nseasons: " + seasons + "\nscore:" + score;
+    }
 }

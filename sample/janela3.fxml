@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -8,7 +9,11 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Janela3Controller">
    <children>
@@ -21,7 +26,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" onAction="#changeUsername" text="Change Username" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -35,18 +40,55 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Label layoutX="552.0" layoutY="125.0" text="visual feedback" />
-                  <Button layoutX="214.0" layoutY="14.0" mnemonicParsing="false" text="Add" />
-                  <Button layoutX="207.0" layoutY="67.0" mnemonicParsing="false" text="Remove" />
-                  <Button layoutX="207.0" layoutY="112.0" mnemonicParsing="false" text="Create" />
+                  <Label fx:id="feedbacklabel" layoutX="419.0" layoutY="125.0" prefHeight="16.0" prefWidth="235.0" text="visual feedback will appear here!!" />
+                  <Button fx:id="addbtn" layoutX="266.0" layoutY="15.0" mnemonicParsing="false" onAction="#adicionarNaLista" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #00ff00;" text="Add" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Add an item in your list" />
+                     </tooltip></Button>
+                  <Button fx:id="removebtn" layoutX="266.0" layoutY="65.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #ff1a1a;" text="Remove" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Remove an item from your list" />
+                     </tooltip></Button>
+                  <Button fx:id="createbtn" layoutX="266.0" layoutY="115.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #1a1aff;" text="Create">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Generate an HTML file with your animelist in the choosen theme" />
+                     </tooltip></Button>
+                  <Text layoutX="8.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anime" />
+                  <Text layoutX="8.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seasons" wrappingWidth="61.99999526143074" />
+                  <Text layoutX="8.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Episodes" />
+                  <Text layoutX="10.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score" wrappingWidth="51.7294921875" />
+                  <TextField fx:id="animefield" layoutX="71.0" layoutY="15.0" />
+                  <TextField fx:id="seasonfield" layoutX="71.0" layoutY="49.0" />
+                  <TextField fx:id="episodesfield" layoutX="71.0" layoutY="83.0" />
+                  <TextField fx:id="scorefield" layoutX="71.0" layoutY="117.0" />
+                  <CheckBox fx:id="checkBox1" layoutX="425.0" layoutY="45.0" mnemonicParsing="false" text="Dark" />
+                  <CheckBox fx:id="checkBox2" layoutX="495.0" layoutY="45.0" mnemonicParsing="false" text="Happy" />
+                  <CheckBox fx:id="checkBox3" layoutX="583.0" layoutY="45.0" mnemonicParsing="false" text="HUEBRBR" />
+                  <Label layoutX="481.0" layoutY="14.0" text="Choose your theme">
+                     <tooltip>
+                        <Tooltip text="You can select only one theme" />
+                     </tooltip>
+                  </Label>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TableView layoutX="103.0" layoutY="31.0" prefHeight="245.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="tableView" layoutX="103.0" layoutY="31.0" prefHeight="245.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+                      <TableColumn fx:id="rankcol" prefWidth="75.0" text="Rank" />
+                        <TableColumn fx:id="animecol" prefWidth="304.0" text="Anime" />
+                        <TableColumn fx:id="seasoncol" prefWidth="127.0" text="Seasons" />
+                        <TableColumn fx:id="episodescol" prefWidth="109.0" text="Episodes" />
+                      <TableColumn fx:id="scorecol" prefWidth="82.0" text="Score" />
                     </columns>
                   </TableView>
                </children>

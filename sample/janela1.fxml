@@ -18,9 +18,9 @@
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+            <Menu mnemonicParsing="false"  text="Edit">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#changeUsername" text="Change Username" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

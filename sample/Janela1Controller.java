@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static sample.Main.setStageScene;
+
 public class Janela1Controller extends Janela implements Initializable {
     @FXML
     public void switchwindow(ActionEvent event) throws IOException {
@@ -33,7 +35,18 @@ public class Janela1Controller extends Janela implements Initializable {
         aboutinfo.setContentText("Programa feito por universitários gugudada");
         aboutinfo.showAndWait();
     }
+    @FXML
+    public void changeUsername(){
+        Parent root1 = null;
+        try {
+            root1 = FXMLLoader.load(getClass().getResource("janela2.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        Scene scene = new Scene(root1);
+        setStageScene(scene);
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
