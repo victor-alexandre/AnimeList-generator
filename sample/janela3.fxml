@@ -84,11 +84,10 @@
                <children>
                   <TableView fx:id="tableView" layoutX="103.0" layoutY="31.0" prefHeight="245.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="rankcol" prefWidth="75.0" text="Rank" />
-                        <TableColumn fx:id="animecol" prefWidth="304.0" text="Anime" />
-                        <TableColumn fx:id="seasoncol" prefWidth="127.0" text="Seasons" />
-                        <TableColumn fx:id="episodescol" prefWidth="109.0" text="Episodes" />
-                      <TableColumn fx:id="scorecol" prefWidth="82.0" text="Score" />
+                        <TableColumn fx:id="animecol" prefWidth="295.0" text="Anime" />
+                        <TableColumn fx:id="seasoncol" prefWidth="136.0" text="Seasons" />
+                        <TableColumn fx:id="episodescol" prefWidth="139.0" text="Episodes" />
+                      <TableColumn fx:id="scorecol" prefWidth="127.0" text="Score" />
                     </columns>
                   </TableView>
                </children>

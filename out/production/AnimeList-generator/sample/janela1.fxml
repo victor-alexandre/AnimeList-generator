@@ -18,7 +18,7 @@
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false"  text="Edit">
+            <Menu mnemonicParsing="false" text="Edit">
                 <items>
                     <MenuItem mnemonicParsing="false" onAction="#changeUsername" text="Change Username" />
             </items>
@@ -35,7 +35,7 @@
             <Image url="@imagens/Konachan.com%20-%20256427%20sample.jpg" />
          </image>
       </ImageView>
-      <Text fill="#f50000" layoutX="48.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Anime Ranking List" textAlignment="CENTER" wrappingWidth="608.7294921875">
+      <Text fill="#f50000" layoutX="48.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to your personal Anime List" textAlignment="CENTER" wrappingWidth="608.7294921875">
          <font>
             <Font name="EB Garamond 08 Regular" size="54.0" />
          </font>

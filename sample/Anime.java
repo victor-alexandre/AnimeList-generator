@@ -15,14 +15,13 @@ public class Anime {
     SimpleIntegerProperty episodes;
     SimpleIntegerProperty seasons;
     SimpleDoubleProperty score;
-    static SimpleIntegerProperty rank;
+
 
     public Anime(String name, int episodes, int seasons, double score) {
         this.name = new SimpleStringProperty(name);
         this.episodes = new SimpleIntegerProperty(episodes);
         this.seasons = new SimpleIntegerProperty(seasons);
         this.score = new SimpleDoubleProperty(score);
-       // this.rank = new SimpleIntegerProperty(getRank()+1);
     }
 
     /*   public Anime(String name, int episodes, int seasons, double score) {
@@ -67,13 +66,6 @@ public class Anime {
         this.score = new SimpleDoubleProperty(score);
     }
 
-    public int getRank() {
-        return rank.get();
-    }
-
-    public void setRank(int rank) {
-        this.rank = new SimpleIntegerProperty(rank);
-    }
 
     @Override
     public String toString() {

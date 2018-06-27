@@ -38,7 +38,6 @@ import static sample.Main.setStageScene;
 
 public class Janela3Controller extends Janela implements Initializable {
     @FXML private TableView<Anime> tableView;
-    @FXML private TableColumn<Anime, Integer> rankcol;
     @FXML private TableColumn<Anime, String> animecol;
     @FXML private TableColumn<Anime, Integer> seasoncol;
     @FXML private TableColumn<Anime, Integer> episodescol;
@@ -88,10 +87,10 @@ public class Janela3Controller extends Janela implements Initializable {
             } else {
                 unselectedCheckBoxes.forEach(cb -> cb.setDisable(false));
                 createbtn.setDisable(true);
-                //tentar setar a label que aparece para "selecione um tema antes de gerar a lista"
+
             }
         });
-        //rankcol.setCellValueFactory(new PropertyValueFactory<Anime, Integer>("rank"));
+
         animecol.setCellValueFactory(new PropertyValueFactory<Anime, String>("name"));
         episodescol.setCellValueFactory(new PropertyValueFactory<Anime, Integer>("episodes"));
         seasoncol.setCellValueFactory(new PropertyValueFactory<Anime, Integer>("seasons"));
