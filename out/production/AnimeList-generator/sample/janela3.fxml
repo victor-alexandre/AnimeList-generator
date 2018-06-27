@@ -21,7 +21,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem mnemonicParsing="false" onAction="#exitProgram" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
@@ -48,14 +48,14 @@
                      <tooltip>
                         <Tooltip text="Add an item in your list" />
                      </tooltip></Button>
-                  <Button fx:id="removebtn" layoutX="266.0" layoutY="65.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #ff1a1a;" text="Remove" textAlignment="CENTER">
+                  <Button fx:id="removebtn" layoutX="266.0" layoutY="65.0" mnemonicParsing="false" onAction="#removerDaLista" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #ff1a1a;" text="Remove" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                      <tooltip>
                         <Tooltip text="Remove an item from your list" />
                      </tooltip></Button>
-                  <Button fx:id="createbtn" layoutX="266.0" layoutY="115.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #1a1aff;" text="Create">
+                  <Button fx:id="createbtn" layoutX="266.0" layoutY="115.0" mnemonicParsing="false" onAction="#generateList" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #1a1aff;" text="Create">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

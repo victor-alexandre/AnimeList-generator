@@ -69,6 +69,6 @@ public class Anime {
 
     @Override
     public String toString() {
-        return "Anime: " + name + "\nepisodes: " + episodes + "\nseasons: " + seasons + "\nscore:" + score;
+        return "Anime: " + name.get() + "\nepisodes: " + episodes.get() + "\nseasons: " + seasons.get() + "\nscore:" + score.get() + "\n";
     }
 }

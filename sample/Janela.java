@@ -21,4 +21,6 @@ public abstract class Janela {
     abstract public void about(ActionEvent event)throws IOException;
 
     abstract public void switchwindow(ActionEvent event)throws IOException;
+
+    abstract void exitProgram(ActionEvent event) throws IOException;
 }

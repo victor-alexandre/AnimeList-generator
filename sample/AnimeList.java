@@ -13,6 +13,6 @@ public class AnimeList {
 
     public void addinLIST(Anime item){
         lista.add(item);
-       // totalEpisodes = totalEpisodes + item.episodes;
+        totalEpisodes = totalEpisodes + item.getEpisodes();
     }
 }

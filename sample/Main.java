@@ -36,7 +36,7 @@ public class Main extends Application {
 
 
 
-        PauseTransition delay = new PauseTransition(Duration.seconds(4));
+        PauseTransition delay = new PauseTransition(Duration.seconds(2));
         delay.setOnFinished(this::callJanela2);
         delay.play();
     }
