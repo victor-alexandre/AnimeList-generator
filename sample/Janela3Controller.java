@@ -88,6 +88,7 @@ public class Janela3Controller extends Janela implements Initializable {
             } else {
                 unselectedCheckBoxes.forEach(cb -> cb.setDisable(false));
                 createbtn.setDisable(true);
+                //tentar setar a label que aparece para "selecione um tema antes de gerar a lista"
             }
         });
         //rankcol.setCellValueFactory(new PropertyValueFactory<Anime, Integer>("rank"));

@@ -18,7 +18,7 @@ import java.io.IOException;
 
 
 public class Main extends Application {
-    static User usuario = new User("jao");
+    static Usuario usuario = new Usuario("jao");
 
     static Stage mainstage;
     @Override
