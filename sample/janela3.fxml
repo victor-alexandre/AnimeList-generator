@@ -40,7 +40,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Label fx:id="feedbacklabel" layoutX="419.0" layoutY="125.0" prefHeight="16.0" prefWidth="235.0" text="visual feedback will appear here!!" />
+                  <Label fx:id="feedbacklabel" layoutX="393.0" layoutY="125.0" prefHeight="16.0" prefWidth="283.0" text="         visual feedback will appear here!!" />
                   <Button fx:id="addbtn" layoutX="266.0" layoutY="15.0" mnemonicParsing="false" onAction="#adicionarNaLista" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #00ff00;" text="Add" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="13.0" />

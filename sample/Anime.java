@@ -5,11 +5,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Anime {
-/*    String name;
-    int episodes;
-    int seasons;
-    double score;
-*/
 
     SimpleStringProperty name;
     SimpleIntegerProperty episodes;
@@ -24,23 +19,14 @@ public class Anime {
         this.score = new SimpleDoubleProperty(score);
     }
 
-    /*   public Anime(String name, int episodes, int seasons, double score) {
-            this.name = name;
-            this.episodes = episodes;
-            this.seasons = seasons;
-            this.score = score;
-        }
-    */
 
     public String getName() {
         return name.get();
     }
 
-
     public void setName(String name) {
         this.name = new SimpleStringProperty(name);
     }
-
 
     public int getEpisodes() {
         return episodes.get();

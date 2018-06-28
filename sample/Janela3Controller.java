@@ -1,6 +1,10 @@
 package sample;
+import java.awt.Label;
 import java.io.*;
-import java.util.ArrayList;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.*;
+
 import javafx.animation.PauseTransition;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
@@ -32,8 +36,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.net.URL;
-import java.util.Optional;
-import java.util.ResourceBundle;
 
 import static sample.Main.setStageScene;
 
@@ -60,7 +62,8 @@ public class Janela3Controller extends Janela implements Initializable {
     private Button createbtn;
 
 
-    ObservableList<Anime> anime = FXCollections.observableArrayList();
+    @FXML
+    private javafx.scene.control.Label feedbacklabel;
 
     private ObservableSet<CheckBox> selectedCheckBoxes = FXCollections.observableSet();
     private ObservableSet<CheckBox> unselectedCheckBoxes = FXCollections.observableSet();
@@ -75,15 +78,18 @@ public class Janela3Controller extends Janela implements Initializable {
         configureCheckBox(checkBox2);
         configureCheckBox(checkBox3);
 
+        feedbacklabel.setText("Escolha um tema para poder gerar a lista");
         createbtn.setDisable(true);
 
         numCheckBoxesSelected.addListener((obs, oldSelectedCount, newSelectedCount) -> {
             if (newSelectedCount.intValue() >= maxNumSelected) {
                 unselectedCheckBoxes.forEach(cb -> cb.setDisable(true));
                 createbtn.setDisable(false);
+                feedbacklabel.setText("");
             } else {
                 unselectedCheckBoxes.forEach(cb -> cb.setDisable(false));
                 createbtn.setDisable(true);
+                feedbacklabel.setText("Escolha um tema para poder gerar a lista");
 
             }
         });
@@ -93,8 +99,7 @@ public class Janela3Controller extends Janela implements Initializable {
         seasoncol.setCellValueFactory(new PropertyValueFactory<Anime, Integer>("seasons"));
         scorecol.setCellValueFactory(new PropertyValueFactory<Anime, Double>("score"));
 
-        tableView.setItems(getAnime());
-
+        tableView.setItems(Main.usuario.personalList.list);
     }
 
     private void configureCheckBox(CheckBox checkBox) {
@@ -113,27 +118,28 @@ public class Janela3Controller extends Janela implements Initializable {
                 selectedCheckBoxes.remove(checkBox);
                 unselectedCheckBoxes.add(checkBox);
             }
-
         });
-
     }
+
+
     @FXML
     public void changeUsername(){
-            Parent root1 = null;
-            try {
-                root1 = FXMLLoader.load(getClass().getResource("janela2.fxml"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        Parent root1 = null;
+        try {
+            root1 = FXMLLoader.load(getClass().getResource("janela2.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-            Scene scene = new Scene(root1);
-            setStageScene(scene);
-            }
+        Scene scene = new Scene(root1);
+        setStageScene(scene);
+    }
 
 
     @FXML
-    public void switchwindow(ActionEvent event) throws IOException { ;
-    }
+    public void switchwindow(ActionEvent event) throws IOException {}
+
+
     @FXML
     public void about(ActionEvent event) throws IOException{
         Alert aboutinfo = new Alert(Alert.AlertType.INFORMATION);
@@ -146,6 +152,7 @@ public class Janela3Controller extends Janela implements Initializable {
     @FXML
     public void adicionarNaLista(){
         Anime item;
+        int i = 0;
 
         try{
             if(animefield.getText().equals("") || episodesfield.getText().equals("") || seasonfield.getText().equals("") || scorefield.getText().equals("")){
@@ -155,15 +162,27 @@ public class Janela3Controller extends Janela implements Initializable {
 
         }catch (Excecoes emptyField){
             espacosVazios();
+            feedbacklabel.setText("");
             return;
         }
 
-        Main.usuario.personalList.addinLIST(item);
-        for(int i = 0; i < Main.usuario.personalList.lista.size(); i++){
-            System.out.println(Main.usuario.personalList.lista.get(i));
+
+        try {
+            for (i = 0; i < Main.usuario.personalList.list.size(); i++) {
+                if (Main.usuario.personalList.list.get(i).getName().equals(item.getName())) {
+                    throw new Excecoes("Anime já existente");
+                }
+            }
+        }catch (Excecoes alreadyexists){
+            itemJAexistente(i, item);
+            return;
         }
+
+        Main.usuario.personalList.list.add(item);
         clearTexField();
-        anime.add(item);
+
+        feedbacklabel.setText("      Item adicionado com sucesso!!!");
+
     }
 
     public void clearTexField(){
@@ -184,18 +203,16 @@ public class Janela3Controller extends Janela implements Initializable {
 
         }catch (Excecoes fullField){
             espacosCheios();
+            feedbacklabel.setText("");
             return;
         }
 
         try {
             boolean flag = false;
             String item = animefield.getText();
-            for (int i = 0; i < Main.usuario.personalList.lista.size(); i++) {
-                if (Main.usuario.personalList.lista.get(i).getName().equals(item)) {
-                    Main.usuario.personalList.lista.remove(i);
-                }
-                if (anime.get(i).getName().equals(item)) {
-                    anime.remove(i);
+            for (int i = 0; i < Main.usuario.personalList.list.size(); i++) {
+                if (Main.usuario.personalList.list.get(i).getName().equals(item)) {
+                    Main.usuario.personalList.list.remove(i);
                     flag = true;
                 }
             }
@@ -204,21 +221,14 @@ public class Janela3Controller extends Janela implements Initializable {
             }
         } catch (Excecoes Nonexistent){
             itemInexistente();
+            feedbacklabel.setText("");
         }
 
-
+        feedbacklabel.setText("     Item removido com sucesso!!!");
         clearTexField();
     }
 
 
-    public  final ObservableList<Anime> getAnime()
-    {
-        //ObservableList<Anime> anime = FXCollections.observableArrayList();
-        //anime.add(new Anime("Bokunopico", 5, 5 , 10.5));
-        //anime.add(new Anime("toradora", 25, 95 , 20.5));
-        //anime.add(new Anime("matrix", 15, 85 , 100.5));
-        return anime;
-    }
 
     public void espacosVazios(){
         Alert aboutinfo = new Alert(Alert.AlertType.ERROR);
@@ -244,6 +254,37 @@ public class Janela3Controller extends Janela implements Initializable {
         aboutinfo.showAndWait();
     }
 
+    public void itemJAexistente(int i, Anime item){
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("This item already exists in your list");
+        alert.setContentText("Do you want to edit it?");
+
+        ButtonType yesbtn = new ButtonType("Yes");
+        ButtonType cancelbtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        alert.getButtonTypes().setAll(yesbtn, cancelbtn);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == yesbtn){
+            Main.usuario.personalList.list.get(i).setName(item.getName());
+            Main.usuario.personalList.list.get(i).setSeasons(item.getSeasons());
+            Main.usuario.personalList.list.get(i).setEpisodes(item.getEpisodes());
+            Main.usuario.personalList.list.get(i).setScore(item.getScore());
+            clearTexField();
+            tableView.getColumns().get(0).setVisible(false);
+            tableView.getColumns().get(0).setVisible(true);
+            feedbacklabel.setText("Item editado com sucesso!!!");
+        }
+
+        else {
+            return;
+        }
+    }
+
+
     @FXML
     public void exitProgram(ActionEvent event) throws IOException{
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -260,19 +301,26 @@ public class Janela3Controller extends Janela implements Initializable {
 
         if (result.get() == exitbtn){
             Main.getStage().close();
-        }
-
-        else {
+        } else {
             return;
         }
     }
 
     @FXML
     public void generateList() throws IOException {
-        OutputStream os = new FileOutputStream(Main.usuario.name+ "list.html");
+        OutputStream os = new FileOutputStream("YourAnimeList.html");
         OutputStreamWriter osw = new OutputStreamWriter(os);
         BufferedWriter bw = new BufferedWriter(osw);
-        Main.usuario.anime1 = anime;
+
+        String tema;
+
+        if(checkBox1.isSelected()){
+            tema = "normal.css";
+        }else if(checkBox2.isSelected()){
+            tema = "dark.css";
+        }else{
+            tema = "happy.css";
+        }
 
         bw.write("<!DOCTYPE html>\n" +
                 "<html>\n" +
@@ -280,14 +328,12 @@ public class Janela3Controller extends Janela implements Initializable {
                 "    <meta charset=\"utf-8\">\n" +
                 "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
                 "    <title>SUPA ANIME LIST</title>\n" +
-                " <!--  <link rel=\"stylesheet\" href=\"style.css\">     -->\n" +
-                "    <link rel=\"stylesheet\" href=\"style.css\">\n" +
-                "    <link rel=\"import\" href=\"animu.html\">\n" +
+                "    <link rel=\"stylesheet\" href=\" "+ tema +"\">\n" +
                 "  </head>\n" +
                 "  <body>\n" +
-                "    <h1 style=\"font-size:50px;\">Hunterigeno's AnimeList</h1>\n" +
-                "    <p>\n" +
-                "      <strong>Traps are no gay!!!!!!!!!!!!!!</strong> \n" +
+                "    <h1 style=\"font-size:50px;\">"+ Main.usuario.name +"'s AnimeList</h1>\n" +
+                "    <p  style=\"color:#ff0000\">\n" +
+                "      <strong> Total de items: "+ Main.usuario.personalList.totalItems() +  "<br />Total episodes: "+ Main.usuario.personalList.totalEpisodes()+ "</strong> \n" +
                 "    </p>\n" +
                 "\n" +
                 " <table>\n" +
@@ -299,7 +345,7 @@ public class Janela3Controller extends Janela implements Initializable {
                 "    </tr>\n\n" +
                 "    ");
 
-        for (int i = 0; i < Main.usuario.personalList.lista.size(); i++) {
+        for (int i = 0; i < Main.usuario.personalList.list.size(); i++) {
  /*           bw.write("<tr>\n");
             bw.write("    <td>"+Main.usuario.personalList.lista.get(i).getName()+"</td>\n");
             bw.write("    <td>"+Main.usuario.personalList.lista.get(i).getSeasons()+"</td>\n");
@@ -308,10 +354,10 @@ public class Janela3Controller extends Janela implements Initializable {
             bw.write("</tr>\n");
 */
             bw.write("<tr>\n");
-            bw.write("    <td>"+Main.usuario.anime1.get(i).getName()+"</td>\n");
-            bw.write("    <td>"+Main.usuario.anime1.get(i).getSeasons()+"</td>\n");
-            bw.write("    <td>"+Main.usuario.anime1.get(i).getEpisodes()+"</td>\n");
-            bw.write("    <td>"+Main.usuario.anime1.get(i).getScore()+"</td>\n");
+            bw.write("    <td>"+Main.usuario.personalList.list.get(i).getName()+"</td>\n");
+            bw.write("    <td>"+Main.usuario.personalList.list.get(i).getSeasons()+"</td>\n");
+            bw.write("    <td>"+Main.usuario.personalList.list.get(i).getEpisodes()+"</td>\n");
+            bw.write("    <td>"+Main.usuario.personalList.list.get(i).getScore()+"</td>\n");
             bw.write("</tr>\n");
 
         }

@@ -1,18 +1,26 @@
 package sample;
 
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 
 public class AnimeList {
-    int totalEpisodes;
-    ArrayList <Anime> lista;
 
-    public AnimeList(){
-        lista = new ArrayList<Anime>();
-        totalEpisodes = 0;
+    ObservableList<Anime> list = FXCollections.observableArrayList();
+
+    public AnimeList(){ super(); }
+
+    public int totalItems(){
+        return list.size();
     }
 
-    public void addinLIST(Anime item){
-        lista.add(item);
-        totalEpisodes = totalEpisodes + item.getEpisodes();
+    public int totalEpisodes(){
+        int episodes = 0;
+
+        for(int i = 0; i < list.size(); i++){
+            episodes = episodes + list.get(i).getEpisodes();
+        }
+
+        return episodes;
     }
 }
