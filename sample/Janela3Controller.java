@@ -28,6 +28,7 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.util.StringConverter;
@@ -36,6 +37,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static sample.Main.setStageScene;
 
@@ -346,20 +349,12 @@ public class Janela3Controller extends Janela implements Initializable {
                 "    ");
 
         for (int i = 0; i < Main.usuario.personalList.list.size(); i++) {
- /*           bw.write("<tr>\n");
-            bw.write("    <td>"+Main.usuario.personalList.lista.get(i).getName()+"</td>\n");
-            bw.write("    <td>"+Main.usuario.personalList.lista.get(i).getSeasons()+"</td>\n");
-            bw.write("    <td>"+Main.usuario.personalList.lista.get(i).getEpisodes()+"</td>\n");
-            bw.write("    <td>"+Main.usuario.personalList.lista.get(i).getScore()+"</td>\n");
-            bw.write("</tr>\n");
-*/
             bw.write("<tr>\n");
-            bw.write("    <td>"+Main.usuario.personalList.list.get(i).getName()+"</td>\n");
-            bw.write("    <td>"+Main.usuario.personalList.list.get(i).getSeasons()+"</td>\n");
-            bw.write("    <td>"+Main.usuario.personalList.list.get(i).getEpisodes()+"</td>\n");
-            bw.write("    <td>"+Main.usuario.personalList.list.get(i).getScore()+"</td>\n");
+            bw.write("    <td><!---->"+Main.usuario.personalList.list.get(i).getName()+"<!----></td>\n");
+            bw.write("    <td><!---->"+Main.usuario.personalList.list.get(i).getSeasons()+"<!----></td>\n");
+            bw.write("    <td><!---->"+Main.usuario.personalList.list.get(i).getEpisodes()+"<!----></td>\n");
+            bw.write("    <td><!---->"+Main.usuario.personalList.list.get(i).getScore()+"<!----></td>\n");
             bw.write("</tr>\n");
-
         }
 
         bw.write("    </table>\n" +
@@ -369,6 +364,213 @@ public class Janela3Controller extends Janela implements Initializable {
                 "\n");
 
         bw.close();
+        feedbacklabel.setText("Lista gerada com sucesso!!!");
     }
+
+    @FXML
+    public void importList() throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Confirm new Import");
+        alert.setContentText("If you import a new list your current data will be overwritten");
+
+        ButtonType yesbtn = new ButtonType("Yes");
+        ButtonType cancelbtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        alert.getButtonTypes().setAll(yesbtn, cancelbtn);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == yesbtn){
+            Main.usuario.personalList.list.clear();
+            //Deleto todos os dados atuais e trabalho só com a lista importada!!
+
+            FileChooser filechoosen = new FileChooser();
+            File file = filechoosen.showOpenDialog(Main.getStage());
+
+            String filename = file.getName();
+            String[] extention = filename.split("\\.");
+          //  System.out.println("---------------------"+filename);
+
+            if (file == null  || extention[1].equals("html") == false) {
+                escolhaArquivo();
+                return;
+            } else {
+
+                FileInputStream is = new FileInputStream(file);
+                InputStreamReader isr = new InputStreamReader(is);
+                BufferedReader br = new BufferedReader(isr);
+
+                String string = "";
+
+                for (int i = 0; i < 24; i++){
+                    string = br.readLine();
+                    System.out.println((i+1)+string);
+                }
+                //for acima lê até a linha 24 do meu html
+
+                String[] parts = string.split("<!---->");
+                //aqui eu parto a primeira linha da tabela do html
+
+                while(parts.length > 1){
+                    String name;
+                    int episodes;
+                    int seasons;
+                    double score;
+                    System.out.println("\n\n\n\n"+string);
+
+                    name = parts[1];
+
+                    string = br.readLine();
+                    parts = string.split("<!---->");
+
+                    seasons = Integer.parseInt(parts[1]);
+
+                    string = br.readLine();
+                    parts = string.split("<!---->");
+
+                    episodes = Integer.parseInt(parts[1]);
+
+                    string = br.readLine();
+                    parts = string.split("<!---->");
+
+                    score = Double.parseDouble(parts[1]);
+
+                    string = br.readLine();
+                    string = br.readLine();
+                    string = br.readLine();
+                    parts = string.split("<!---->");
+                    //parto essa linha para fazer a proxima verificaçao
+
+                    Main.usuario.personalList.list.add(new Anime(name, episodes, seasons, score));
+
+                }
+                br.close();
+                feedbacklabel.setText("Lista importada com sucesso!!!");
+            }
+
+        } else {
+            return;
+        }
+
+    }
+
+    @FXML
+    public void addImportList() throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Confirm new Import");
+        alert.setContentText("Are you sure you want to add the following list");
+
+        ButtonType yesbtn = new ButtonType("Yes");
+        ButtonType cancelbtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        alert.getButtonTypes().setAll(yesbtn, cancelbtn);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == yesbtn){
+            FileChooser filechoosen = new FileChooser();
+            File file = filechoosen.showOpenDialog(Main.getStage());
+
+            String filename = file.getName();
+            String[] extention = filename.split("\\.");
+           // System.out.println("---------------------"+filename);
+
+            if (file == null  || extention[1].equals("html") == false) {
+                escolhaArquivo();
+                return;
+            } else {
+
+                FileInputStream is = new FileInputStream(file);
+                InputStreamReader isr = new InputStreamReader(is);
+                BufferedReader br = new BufferedReader(isr);
+
+                String string = "";
+
+                for (int i = 0; i < 24; i++){
+                    string = br.readLine();
+                    System.out.println((i+1)+string);
+                }
+                //for acima lê até a linha 24 do meu html
+
+                String[] parts = string.split("<!---->");
+                //aqui eu parto a primeira linha da tabela do html
+
+                while(parts.length > 1){
+                    String name;
+                    int episodes;
+                    int seasons;
+                    double score;
+
+                    name = parts[1];
+
+                    string = br.readLine();
+                    parts = string.split("<!---->");
+
+                    seasons = Integer.parseInt(parts[1]);
+
+                    string = br.readLine();
+                    parts = string.split("<!---->");
+
+                    episodes = Integer.parseInt(parts[1]);
+
+                    string = br.readLine();
+                    parts = string.split("<!---->");
+
+                    score = Double.parseDouble(parts[1]);
+
+                    string = br.readLine();
+                    string = br.readLine();
+                    string = br.readLine();
+                    parts = string.split("<!---->");
+                    //parto essa linha para fazer a proxima verificaçao
+
+                    Main.usuario.personalList.list.add(new Anime(name, episodes, seasons, score));
+
+                }
+                br.close();
+                feedbacklabel.setText("Items importados com sucesso!!!");
+            }
+
+        } else {
+            return;
+        }
+
+    }
+
+
+    public void escolhaArquivo(){
+        Alert aboutinfo = new Alert(Alert.AlertType.ERROR);
+        aboutinfo.setTitle("Invalid File");
+        //aboutinfo.setHeaderText("teste");
+        aboutinfo.setContentText("Please choose only html files");
+        aboutinfo.showAndWait();
+    }
+
+    @FXML
+    public void deleteAll(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Confirm Deletion");
+        alert.setContentText("Are you sure you want delete all items from table?");
+
+        ButtonType yesbtn = new ButtonType("Yes");
+        ButtonType cancelbtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        alert.getButtonTypes().setAll(yesbtn, cancelbtn);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == yesbtn){
+            Main.usuario.personalList.list.clear();
+            feedbacklabel.setText("Items removidos com sucesso!!!");
+
+        } else {
+            return;
+        }
+
+    }
+
 
 }

@@ -21,12 +21,16 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
+                  <MenuItem mnemonicParsing="false" onAction="#importList" text="Import List" />
+                  <MenuItem mnemonicParsing="false" onAction="#addImportList" text="Import items" />
               <MenuItem mnemonicParsing="false" onAction="#exitProgram" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#changeUsername" text="Change Username" />
+                  <MenuItem mnemonicParsing="false" onAction="#clearTexField" text="Clear" />
+                  <MenuItem mnemonicParsing="false" onAction="#deleteAll" text="Delete all items" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
