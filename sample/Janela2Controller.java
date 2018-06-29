@@ -40,26 +40,13 @@ public class Janela2Controller extends Janela implements Initializable {
 
     @FXML
     public void about(ActionEvent event) throws IOException{
-        Alert aboutinfo = new Alert(Alert.AlertType.INFORMATION);
-        aboutinfo.setTitle("About");
-        aboutinfo.setHeaderText("teste");
-        aboutinfo.setContentText("Programa feito por universitários gugudada");
-        aboutinfo.showAndWait();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About");
+        alert.setHeaderText("teste");
+        alert.setContentText("Programa feito por universitários gugudada");
+        alert.showAndWait();
     }
 
-
-    @FXML
-    public void changeUsername(){
-        Parent root1 = null;
-        try {
-            root1 = FXMLLoader.load(getClass().getResource("janela2.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Scene scene = new Scene(root1);
-        setStageScene(scene);
-    }
 
 
     @FXML

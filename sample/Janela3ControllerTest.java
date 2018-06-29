@@ -23,7 +23,7 @@ class Janela3ControllerTest {
     }
 
     @org.junit.jupiter.api.Test
-    public void checaDeleteAll() {
+    public void checaListClear() {
         Usuario teste = new Usuario("joao");
         teste.personalList.list.add(new Anime("anime", 5,5,5));
         teste.personalList.list.add(new Anime("anime1", 5,5,5));
@@ -31,8 +31,15 @@ class Janela3ControllerTest {
         teste.personalList.list.add(new Anime("anime3", 5,5,5));
 
         teste.personalList.list.clear();
-
         assertEquals(0,teste.personalList.totalItems());
-
     }
+
+    @org.junit.jupiter.api.Test
+    public void checaScore() {
+        Usuario teste = new Usuario("joao");
+        teste.personalList.list.add(new Anime("anime", 5,5,5.6));
+        assertEquals(5.5,teste.personalList.list.get(0).getScore(), 0.1);
+    }
+
+
 }

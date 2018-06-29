@@ -16,8 +16,6 @@ import java.io.IOException;
 
 public abstract class Janela {
 
-    abstract public void changeUsername();
-
     abstract public void about(ActionEvent event)throws IOException;
 
     abstract public void switchwindow(ActionEvent event)throws IOException;

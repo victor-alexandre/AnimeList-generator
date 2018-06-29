@@ -28,6 +28,7 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -74,6 +75,7 @@ public class Janela3Controller extends Janela implements Initializable {
     private IntegerBinding numCheckBoxesSelected = Bindings.size(selectedCheckBoxes);
 
     private final int maxNumSelected =  1;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -145,11 +147,11 @@ public class Janela3Controller extends Janela implements Initializable {
 
     @FXML
     public void about(ActionEvent event) throws IOException{
-        Alert aboutinfo = new Alert(Alert.AlertType.INFORMATION);
-        aboutinfo.setTitle("About");
-        aboutinfo.setHeaderText("teste");
-        aboutinfo.setContentText("Programa feito por universitários gugudada");
-        aboutinfo.showAndWait();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About");
+        alert.setHeaderText("teste");
+        alert.setContentText("Programa feito por universitários gugudada");
+        alert.showAndWait();
     }
 
     @FXML
@@ -169,33 +171,33 @@ public class Janela3Controller extends Janela implements Initializable {
                 intValue = Integer.parseInt(episodesfield.getText());
             }catch (NumberFormatException e) {
 
-                Alert aboutinfo = new Alert(Alert.AlertType.ERROR);
-                aboutinfo.setTitle("Invalid caracter");
-                //aboutinfo.setHeaderText("teste");
-                aboutinfo.setContentText("Please use just numbers in episodes");
-                aboutinfo.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Invalid caracter");
+                //alert.setHeaderText("teste");
+                alert.setContentText("Please use only integer numbers in episodes");
+                alert.showAndWait();
                 return;
             }
             try {
                 intValue2 = Integer.parseInt(seasonfield.getText());
             }catch (NumberFormatException e) {
                 System.out.println(intValue);
-                Alert aboutinfo = new Alert(Alert.AlertType.ERROR);
-                aboutinfo.setTitle("Invalid caracter");
-                //aboutinfo.setHeaderText("teste");
-                aboutinfo.setContentText("Please use just numbers in seasons");
-                aboutinfo.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Invalid caracter");
+                //alert.setHeaderText("teste");
+                alert.setContentText("Please use only integer numbers in seasons");
+                alert.showAndWait();
                 return;
             }
             try {
                 doubleValue = Integer.parseInt(scorefield.getText());
             }catch (NumberFormatException e) {
                 System.out.println(intValue);
-                Alert aboutinfo = new Alert(Alert.AlertType.ERROR);
-                aboutinfo.setTitle("Invalid caracter");
-                //aboutinfo.setHeaderText("teste");
-                aboutinfo.setContentText("Please use just numbers in score");
-                aboutinfo.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Invalid caracter");
+                //alert.setHeaderText("teste");
+                alert.setContentText("Please use only numbers in score");
+                alert.showAndWait();
                 return;
             }
 
@@ -234,66 +236,24 @@ public class Janela3Controller extends Janela implements Initializable {
     }
 
     @FXML
-    public void removerDaLista(){
-
-        try{
-            if(episodesfield.getText().equals("") == false || seasonfield.getText().equals("") == false|| scorefield.getText().equals("")== false){
-                throw new Excecoes("full field");
-            }
-
-
-        }catch (Excecoes fullField){
-            espacosCheios();
-            feedbacklabel.setText("");
-            return;
-        }
-
-        try {
-            boolean flag = false;
-            String item = animefield.getText();
-            for (int i = 0; i < Main.usuario.personalList.list.size(); i++) {
-                if (Main.usuario.personalList.list.get(i).getName().equals(item)) {
-                    Main.usuario.personalList.list.remove(i);
-                    flag = true;
-                }
-            }
-            if (flag == false) {
-                throw new Excecoes("Item non existent");
-            }
-        } catch (Excecoes Nonexistent){
-            itemInexistente();
-            feedbacklabel.setText("");
-        }
-
-        feedbacklabel.setText("     Item removido com sucesso!!!");
-        clearTexField();
+    public void clearScreen(){
+        animefield.setText("");
+        episodesfield.setText("");
+        seasonfield.setText("");
+        scorefield.setText("");
+        feedbacklabel.setText("");
     }
-
 
 
     public void espacosVazios(){
-        Alert aboutinfo = new Alert(Alert.AlertType.ERROR);
-        aboutinfo.setTitle("Empty Fields");
-        //aboutinfo.setHeaderText("teste");
-        aboutinfo.setContentText("Please do not leave any empty field when adding an item");
-        aboutinfo.showAndWait();
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Empty Fields");
+        //alert.setHeaderText("teste");
+        alert.setContentText("Please do not leave any empty field when adding an item");
+        alert.showAndWait();
     }
 
-    public void espacosCheios(){
-        Alert aboutinfo = new Alert(Alert.AlertType.ERROR);
-        aboutinfo.setTitle("Wrong Fields");
-        //aboutinfo.setHeaderText("teste");
-        aboutinfo.setContentText("To remove an item you should write only its name");
-        aboutinfo.showAndWait();
-    }
 
-    public void itemInexistente(){
-        Alert aboutinfo = new Alert(Alert.AlertType.ERROR);
-        aboutinfo.setTitle("Item not found");
-        //aboutinfo.setHeaderText("teste");
-        aboutinfo.setContentText("This item doesn't exists in the list");
-        aboutinfo.showAndWait();
-    }
 
     public void itemJAexistente(int i, Anime item){
 
@@ -329,6 +289,7 @@ public class Janela3Controller extends Janela implements Initializable {
     @FXML
     public void exitProgram(ActionEvent event) throws IOException{
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setResizable(true);
         alert.setTitle("Confirmation");
         alert.setHeaderText("Confirm exit");
         alert.setContentText("Are you sure you want to exit?");
@@ -408,9 +369,11 @@ public class Janela3Controller extends Janela implements Initializable {
     @FXML
     public void importList() throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setResizable(true);
         alert.setTitle("Confirmation");
         alert.setHeaderText("Confirm new Import");
-        alert.setContentText("If you import a new list your current data will be overwritten");
+        alert.getDialogPane().setContentText("If you import a new list your current data will be overwritten");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 
         ButtonType yesbtn = new ButtonType("Yes");
         ButtonType cancelbtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -424,13 +387,16 @@ public class Janela3Controller extends Janela implements Initializable {
             //Deleto todos os dados atuais e trabalho só com a lista importada!!
 
             FileChooser filechoosen = new FileChooser();
-            File file = filechoosen.showOpenDialog(Main.getStage());
 
+            File file = filechoosen.showOpenDialog(Main.getStage());
+            if(file == null){//evitar null pointer exception quando cancela a escolha de arquivo
+                return;
+            }
             String filename = file.getName();
             String[] extention = filename.split("\\.");
           //  System.out.println("---------------------"+filename);
 
-            if (file == null  || extention[1].equals("html") == false) {
+            if (extention[1].equals("html") == false) {
                 escolhaArquivo();
                 return;
             } else {
@@ -496,6 +462,7 @@ public class Janela3Controller extends Janela implements Initializable {
     @FXML
     public void addImportList() throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setResizable(true);
         alert.setTitle("Confirmation");
         alert.setHeaderText("Confirm new Import");
         alert.setContentText("Are you sure you want to add the following list");
@@ -510,12 +477,15 @@ public class Janela3Controller extends Janela implements Initializable {
         if (result.get() == yesbtn){
             FileChooser filechoosen = new FileChooser();
             File file = filechoosen.showOpenDialog(Main.getStage());
+            if(file == null){//evitar null pointer exception quando cancela a escolha de arquivo
+                return;
+            }
 
             String filename = file.getName();
             String[] extention = filename.split("\\.");
            // System.out.println("---------------------"+filename);
 
-            if (file == null  || extention[1].equals("html") == false) {
+            if (extention[1].equals("html") == false) {
                 escolhaArquivo();
                 return;
             } else {
@@ -579,45 +549,96 @@ public class Janela3Controller extends Janela implements Initializable {
 
 
     public void escolhaArquivo(){
-        Alert aboutinfo = new Alert(Alert.AlertType.ERROR);
-        aboutinfo.setTitle("Invalid File");
-        //aboutinfo.setHeaderText("teste");
-        aboutinfo.setContentText("Please choose only html files");
-        aboutinfo.showAndWait();
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Invalid File");
+        //alert.setHeaderText("teste");
+        alert.setResizable(true);
+        alert.setContentText("Please choose only html files");
+        alert.showAndWait();
     }
 
     @FXML
     public void deleteAll(){
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("Confirm Deletion");
-        alert.setContentText("Are you sure you want delete all items from table?");
-
-        ButtonType yesbtn = new ButtonType("Yes");
-        ButtonType cancelbtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-
-        alert.getButtonTypes().setAll(yesbtn, cancelbtn);
-
-        Optional<ButtonType> result = alert.showAndWait();
-
-        if (result.get() == yesbtn){
-            Main.usuario.personalList.list.clear();
-            feedbacklabel.setText("Items removidos com sucesso!!!");
-
-        } else {
+        if(Main.usuario.personalList.totalItems() == 0){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setResizable(true);
+            alert.setTitle("Invalid operation");
+            //alert.setHeaderText("teste");
+            alert.setContentText("There is no data to remove");
+            alert.showAndWait();
             return;
-        }
+        }else {
 
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Confirm Deletion");
+            alert.setContentText("Are you sure you want delete all items from table?");
+            alert.setResizable(true);
+            ButtonType yesbtn = new ButtonType("Yes");
+            ButtonType cancelbtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            alert.getButtonTypes().setAll(yesbtn, cancelbtn);
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.get() == yesbtn) {
+                Main.usuario.personalList.list.clear();
+                feedbacklabel.setText("Items removidos com sucesso!!!");
+
+            } else {
+                return;
+            }
+        }
     }
 
     @FXML
     public void customdelete(){
-        String name = tableView.getSelectionModel().getSelectedItem().getName();
-        for(int i = 0; i < Main.usuario.personalList.totalItems(); i++){
-            if(name.equals(Main.usuario.personalList.list.get(i).getName())){
-                Main.usuario.personalList.list.remove(i);
-                feedbacklabel.setText(name + " removido com sucesso!!!");
-                return;
+        if(Main.usuario.personalList.totalItems() == 0){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setResizable(true);
+            alert.setTitle("Invalid operation");
+            //alert.setHeaderText("teste");
+            alert.setContentText("There is no data to remove");
+            alert.showAndWait();
+            return;
+        }else if(tableView.getSelectionModel().getSelectedItem() == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setResizable(true);
+            alert.setTitle("No item selected");
+            //alert.setHeaderText("teste");
+            alert.setContentText("Please select an item to remove");
+            alert.showAndWait();
+            return;
+        }else {
+
+            String name = tableView.getSelectionModel().getSelectedItem().getName();
+
+            for (int i = 0; i < Main.usuario.personalList.totalItems(); i++) {
+                if (name.equals(Main.usuario.personalList.list.get(i).getName())) {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setResizable(true);
+                    alert.setTitle("Confirmation");
+                    alert.setHeaderText("Confirm Deletion");
+                    alert.setContentText("Do you want to remove" + name + " from your list");
+
+                    ButtonType yesbtn = new ButtonType("Yes");
+                    ButtonType cancelbtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                    alert.getButtonTypes().setAll(yesbtn, cancelbtn);
+
+                    Optional<ButtonType> result = alert.showAndWait();
+
+                    if (result.get() == yesbtn) {
+                        Main.usuario.personalList.list.remove(i);
+                        feedbacklabel.setText(name + " removido com sucesso!!!");
+
+                    } else {
+                        return;
+                    }
+
+                    return;
+                }
             }
         }
     }

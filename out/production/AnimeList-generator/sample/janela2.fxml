@@ -20,11 +20,6 @@
                         <MenuItem mnemonicParsing="false" onAction="#exitProgram" text="Close" />
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                    <items>
-                        <MenuItem mnemonicParsing="false" onAction="#changeUsername" text="Change Username" />
-                    </items>
-                </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#about" text="About" />

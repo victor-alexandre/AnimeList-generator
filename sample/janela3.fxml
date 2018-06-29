@@ -29,8 +29,8 @@
           <Menu mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#changeUsername" text="Change Username" />
-                  <MenuItem mnemonicParsing="false" onAction="#clearTexField" text="Clear" />
-                  <MenuItem mnemonicParsing="false" onAction="#deleteAll" text="Delete all items" />
+                <MenuItem mnemonicParsing="false" onAction="#deleteAll" text="Delete all items" />
+                <MenuItem mnemonicParsing="false" onAction="#clearScreen" text="Clear" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
