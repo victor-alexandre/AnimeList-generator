@@ -161,6 +161,44 @@ public class Janela3Controller extends Janela implements Initializable {
             if(animefield.getText().equals("") || episodesfield.getText().equals("") || seasonfield.getText().equals("") || scorefield.getText().equals("")){
                 throw new Excecoes("empty field");
             }
+
+            int intValue =0;
+            int intValue2 =0;
+            double doubleValue = 0;
+            try {
+                intValue = Integer.parseInt(episodesfield.getText());
+            }catch (NumberFormatException e) {
+
+                Alert aboutinfo = new Alert(Alert.AlertType.ERROR);
+                aboutinfo.setTitle("Invalid caracter");
+                //aboutinfo.setHeaderText("teste");
+                aboutinfo.setContentText("Please use just numbers in episodes");
+                aboutinfo.showAndWait();
+                return;
+            }
+            try {
+                intValue2 = Integer.parseInt(seasonfield.getText());
+            }catch (NumberFormatException e) {
+                System.out.println(intValue);
+                Alert aboutinfo = new Alert(Alert.AlertType.ERROR);
+                aboutinfo.setTitle("Invalid caracter");
+                //aboutinfo.setHeaderText("teste");
+                aboutinfo.setContentText("Please use just numbers in seasons");
+                aboutinfo.showAndWait();
+                return;
+            }
+            try {
+                doubleValue = Integer.parseInt(scorefield.getText());
+            }catch (NumberFormatException e) {
+                System.out.println(intValue);
+                Alert aboutinfo = new Alert(Alert.AlertType.ERROR);
+                aboutinfo.setTitle("Invalid caracter");
+                //aboutinfo.setHeaderText("teste");
+                aboutinfo.setContentText("Please use just numbers in score");
+                aboutinfo.showAndWait();
+                return;
+            }
+
             item = new Anime(animefield.getText(), Integer.parseInt(episodesfield.getText()), Integer.parseInt(seasonfield.getText()), Double.parseDouble(scorefield.getText()));
 
         }catch (Excecoes emptyField){
@@ -572,5 +610,16 @@ public class Janela3Controller extends Janela implements Initializable {
 
     }
 
+    @FXML
+    public void customdelete(){
+        String name = tableView.getSelectionModel().getSelectedItem().getName();
+        for(int i = 0; i < Main.usuario.personalList.totalItems(); i++){
+            if(name.equals(Main.usuario.personalList.list.get(i).getName())){
+                Main.usuario.personalList.list.remove(i);
+                feedbacklabel.setText(name + " removido com sucesso!!!");
+                return;
+            }
+        }
+    }
 
 }
