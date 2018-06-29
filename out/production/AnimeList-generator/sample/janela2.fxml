@@ -37,7 +37,7 @@
             <Font name="EB Garamond 08 Regular" size="54.0" />
          </font>
       </Text>
-      <TextField fx:id="SATANAS" layoutX="219.0" layoutY="420.0" prefHeight="26.0" prefWidth="206.0" promptText="Types your username">
+      <TextField fx:id="usernameField" layoutX="219.0" layoutY="420.0" prefHeight="26.0" prefWidth="206.0" promptText="Types your username">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></TextField>

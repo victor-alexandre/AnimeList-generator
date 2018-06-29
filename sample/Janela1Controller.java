@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -25,32 +26,31 @@ import java.util.ResourceBundle;
 import static sample.Main.setStageScene;
 
 public class Janela1Controller extends Janela implements Initializable {
-    @FXML
-    public void switchwindow(ActionEvent event) throws IOException {
 
-    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) { }
+
+    @FXML
+    public void switchwindow(ActionEvent event) throws IOException { }
 
     @FXML
     public void about(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
-        alert.setHeaderText("teste");
-        alert.setContentText("Programa feito por universitários gugudada");
+        alert.setHeaderText(null);
+        alert.setContentText("Program made by: Victor Alexandre & Matheus Diniz");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         alert.showAndWait();
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
     }
 
 
     @FXML
     public void exitProgram(ActionEvent event) throws IOException{
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("Confirm exit");
+        alert.setTitle("Confirm exit");
+        alert.setHeaderText(null);
         alert.setContentText("Are you sure you want to exit?");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 
         ButtonType exitbtn = new ButtonType("Exit");
         ButtonType cancelbtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);

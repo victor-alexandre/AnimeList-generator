@@ -2,25 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce3b0d7c-4ea4-41b7-996b-798e3cedfec1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/YourAnimeList.html" beforeDir="false" afterPath="$PROJECT_DIR$/YourAnimeList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimeList-generator/YourAnimeList.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AnimeList-generator/YourAnimeList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimeList-generator/sample/Janela.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AnimeList-generator/sample/Janela.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimeList-generator/sample/Janela1Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AnimeList-generator/sample/Janela1Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimeList-generator/sample/Janela2Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AnimeList-generator/sample/Janela2Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimeList-generator/sample/Janela3Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AnimeList-generator/sample/Janela3Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimeList-generator/sample/Janela3ControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AnimeList-generator/sample/Janela3ControllerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimeList-generator/sample/janela1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AnimeList-generator/sample/janela1.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimeList-generator/sample/janela2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AnimeList-generator/sample/janela2.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AnimeList-generator/sample/janela3.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AnimeList-generator/sample/janela3.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/Janela.java" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Janela.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/Janela1Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Janela1Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/Janela2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Janela2Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/Janela3Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Janela3Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/Janela3ControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Janela3ControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/janela1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/sample/janela1.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/janela2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/sample/janela2.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/janela3.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/sample/janela3.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,8 +22,8 @@
       <file leaf-file-name="Janela3Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sample/Janela3Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="390" column="9" selection-start-line="390" selection-start-column="9" selection-end-line="390" selection-end-column="9" />
+            <state relative-caret-position="-2612">
+              <caret line="459" column="45" selection-start-line="459" selection-start-column="45" selection-end-line="459" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -44,8 +31,8 @@
       <file leaf-file-name="Janela2Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sample/Janela2Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
+            <state relative-caret-position="615">
+              <caret line="63" selection-start-line="63" selection-end-line="63" />
             </state>
           </provider>
         </entry>
@@ -53,8 +40,8 @@
       <file leaf-file-name="Janela1Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sample/Janela1Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="240">
+              <caret line="39" selection-start-line="39" selection-end-line="40" selection-end-column="82" />
             </state>
           </provider>
         </entry>
@@ -68,21 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="janela1.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sample/janela1.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="71" selection-start-line="17" selection-start-column="71" selection-end-line="17" selection-end-column="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="38" column="70" selection-start-line="38" selection-start-column="70" selection-end-line="38" selection-end-column="70" />
+            <state relative-caret-position="-483">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
             </state>
           </provider>
         </entry>
@@ -92,16 +69,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
               <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="janela3.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sample/janela3.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -137,9 +104,13 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>aboutinfo</find>
+      <find>alert.setResizable(true);</find>
+      <find>SATANAS</find>
     </findStrings>
     <replaceStrings>
       <replace>alert</replace>
+      <replace />
+      <replace>usernameField</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -150,7 +121,6 @@
       <list>
         <option value="$PROJECT_DIR$/sample/User.java" />
         <option value="$PROJECT_DIR$/sample/Excecoes.java" />
-        <option value="$PROJECT_DIR$/sample/Main.java" />
         <option value="$PROJECT_DIR$/sample/janela1.fxml" />
         <option value="$PROJECT_DIR$/sample/janela2.fxml" />
         <option value="$PROJECT_DIR$/sample/Anime.java" />
@@ -160,8 +130,9 @@
         <option value="$PROJECT_DIR$/sample/Janela3ControllerTest.java" />
         <option value="$PROJECT_DIR$/sample/janela3.fxml" />
         <option value="$PROJECT_DIR$/sample/Janela.java" />
-        <option value="$PROJECT_DIR$/sample/Janela2Controller.java" />
+        <option value="$PROJECT_DIR$/sample/Main.java" />
         <option value="$PROJECT_DIR$/sample/Janela1Controller.java" />
+        <option value="$PROJECT_DIR$/sample/Janela2Controller.java" />
         <option value="$PROJECT_DIR$/sample/Janela3Controller.java" />
       </list>
     </option>
@@ -385,6 +356,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19772728" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32917318" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -396,7 +368,6 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32917318" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
@@ -687,20 +658,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="38" column="70" selection-start-line="38" selection-start-column="70" selection-end-line="38" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sample/Janela3ControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sample/Excecoes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -715,18 +672,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sample/janela3.fxml">
+    <entry file="file://$PROJECT_DIR$/sample/janela1.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sample/Janela1Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="255">
+          <caret line="17" column="71" selection-start-line="17" selection-start-column="71" selection-end-line="17" selection-end-column="71" />
         </state>
       </provider>
     </entry>
@@ -737,25 +687,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sample/janela1.fxml">
+    <entry file="file://$PROJECT_DIR$/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-483">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample/janela3.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="71" selection-start-line="17" selection-start-column="71" selection-end-line="17" selection-end-column="71" />
+        <state relative-caret-position="-444">
+          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sample/Janela2Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        <state relative-caret-position="615">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample/Janela3ControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample/Janela1Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="39" selection-start-line="39" selection-end-line="40" selection-end-column="82" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sample/Janela3Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="390" column="9" selection-start-line="390" selection-start-column="9" selection-end-line="390" selection-end-column="9" />
+        <state relative-caret-position="-2612">
+          <caret line="459" column="45" selection-start-line="459" selection-start-column="45" selection-end-line="459" selection-end-column="45" />
         </state>
       </provider>
     </entry>

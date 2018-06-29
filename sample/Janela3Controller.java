@@ -41,8 +41,6 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static sample.Main.setStageScene;
-
 public class Janela3Controller extends Janela implements Initializable {
     @FXML private TableView<Anime> tableView;
     @FXML private TableColumn<Anime, String> animecol;
@@ -83,7 +81,7 @@ public class Janela3Controller extends Janela implements Initializable {
         configureCheckBox(checkBox2);
         configureCheckBox(checkBox3);
 
-        feedbacklabel.setText("Escolha um tema para poder gerar a lista");
+        feedbacklabel.setText("Choose a theme before creating your list");
         createbtn.setDisable(true);
 
         numCheckBoxesSelected.addListener((obs, oldSelectedCount, newSelectedCount) -> {
@@ -94,7 +92,7 @@ public class Janela3Controller extends Janela implements Initializable {
             } else {
                 unselectedCheckBoxes.forEach(cb -> cb.setDisable(false));
                 createbtn.setDisable(true);
-                feedbacklabel.setText("Escolha um tema para poder gerar a lista");
+                feedbacklabel.setText("Choose a theme before creating your list");
 
             }
         });
@@ -137,7 +135,7 @@ public class Janela3Controller extends Janela implements Initializable {
         }
 
         Scene scene = new Scene(root1);
-        setStageScene(scene);
+        Main.setStageScene(scene);
     }
 
 
@@ -149,8 +147,9 @@ public class Janela3Controller extends Janela implements Initializable {
     public void about(ActionEvent event) throws IOException{
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
-        alert.setHeaderText("teste");
-        alert.setContentText("Programa feito por universitários gugudada");
+        alert.setHeaderText(null);
+        alert.setContentText("Program made by: Victor Alexandre & Matheus Diniz");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         alert.showAndWait();
     }
 
@@ -173,8 +172,9 @@ public class Janela3Controller extends Janela implements Initializable {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Invalid caracter");
-                //alert.setHeaderText("teste");
+                alert.setHeaderText(null);
                 alert.setContentText("Please use only integer numbers in episodes");
+                alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
                 alert.showAndWait();
                 return;
             }
@@ -184,19 +184,21 @@ public class Janela3Controller extends Janela implements Initializable {
                 System.out.println(intValue);
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Invalid caracter");
-                //alert.setHeaderText("teste");
-                alert.setContentText("Please use only integer numbers in seasons");
+                alert.setHeaderText(null);
+                alert.setContentText("Please use only integer numbers in the season field");
+                alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
                 alert.showAndWait();
                 return;
             }
             try {
-                doubleValue = Integer.parseInt(scorefield.getText());
+                doubleValue = Double.parseDouble(scorefield.getText());
             }catch (NumberFormatException e) {
                 System.out.println(intValue);
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Invalid caracter");
-                //alert.setHeaderText("teste");
-                alert.setContentText("Please use only numbers in score");
+                alert.setHeaderText(null);
+                alert.setContentText("Please use only numbers in the score field");
+                alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
                 alert.showAndWait();
                 return;
             }
@@ -224,7 +226,7 @@ public class Janela3Controller extends Janela implements Initializable {
         Main.usuario.personalList.list.add(item);
         clearTexField();
 
-        feedbacklabel.setText("      Item adicionado com sucesso!!!");
+        feedbacklabel.setText("      Item successfully added!!!");
 
     }
 
@@ -248,8 +250,9 @@ public class Janela3Controller extends Janela implements Initializable {
     public void espacosVazios(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Empty Fields");
-        //alert.setHeaderText("teste");
+        alert.setHeaderText(null);
         alert.setContentText("Please do not leave any empty field when adding an item");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         alert.showAndWait();
     }
 
@@ -258,9 +261,10 @@ public class Janela3Controller extends Janela implements Initializable {
     public void itemJAexistente(int i, Anime item){
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("This item already exists in your list");
+        alert.setTitle(" This item already exists in your list");
+        alert.setHeaderText(null);
         alert.setContentText("Do you want to edit it?");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 
         ButtonType yesbtn = new ButtonType("Yes");
         ButtonType cancelbtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -275,9 +279,11 @@ public class Janela3Controller extends Janela implements Initializable {
             Main.usuario.personalList.list.get(i).setEpisodes(item.getEpisodes());
             Main.usuario.personalList.list.get(i).setScore(item.getScore());
             clearTexField();
+
+            //jogadinha pra dar refresh na lista
             tableView.getColumns().get(0).setVisible(false);
             tableView.getColumns().get(0).setVisible(true);
-            feedbacklabel.setText("Item editado com sucesso!!!");
+            feedbacklabel.setText("    Item successfully edited!!!");
         }
 
         else {
@@ -289,10 +295,11 @@ public class Janela3Controller extends Janela implements Initializable {
     @FXML
     public void exitProgram(ActionEvent event) throws IOException{
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setResizable(true);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("Confirm exit");
+
+        alert.setTitle("Confirm exit");
+        alert.setHeaderText(null);
         alert.setContentText("Are you sure you want to exit?");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 
         ButtonType exitbtn = new ButtonType("Exit");
         ButtonType cancelbtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -363,16 +370,16 @@ public class Janela3Controller extends Janela implements Initializable {
                 "\n");
 
         bw.close();
-        feedbacklabel.setText("Lista gerada com sucesso!!!");
+        feedbacklabel.setText("List successfully created!");
     }
 
     @FXML
     public void importList() throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setResizable(true);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("Confirm new Import");
-        alert.getDialogPane().setContentText("If you import a new list your current data will be overwritten");
+       //
+        alert.setTitle("Confirm new import");
+        alert.setHeaderText(null);
+        alert.setContentText("If you import a new list your current data will be overwritten. Do you want to proceed?");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 
         ButtonType yesbtn = new ButtonType("Yes");
@@ -392,11 +399,11 @@ public class Janela3Controller extends Janela implements Initializable {
             if(file == null){//evitar null pointer exception quando cancela a escolha de arquivo
                 return;
             }
+
             String filename = file.getName();
             String[] extention = filename.split("\\.");
-          //  System.out.println("---------------------"+filename);
 
-            if (extention[1].equals("html") == false) {
+            if (extention.length <= 1 || extention[1].equals("html") == false) {
                 escolhaArquivo();
                 return;
             } else {
@@ -450,7 +457,7 @@ public class Janela3Controller extends Janela implements Initializable {
 
                 }
                 br.close();
-                feedbacklabel.setText("Lista importada com sucesso!!!");
+                feedbacklabel.setText(" List successfully imported!");
             }
 
         } else {
@@ -462,10 +469,11 @@ public class Janela3Controller extends Janela implements Initializable {
     @FXML
     public void addImportList() throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setResizable(true);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("Confirm new Import");
-        alert.setContentText("Are you sure you want to add the following list");
+
+        alert.setTitle("Confirm import");
+        alert.setHeaderText(null);
+        alert.setContentText("All items from imported list will be added into your list. Do you want to proceed?");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 
         ButtonType yesbtn = new ButtonType("Yes");
         ButtonType cancelbtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -483,9 +491,8 @@ public class Janela3Controller extends Janela implements Initializable {
 
             String filename = file.getName();
             String[] extention = filename.split("\\.");
-           // System.out.println("---------------------"+filename);
 
-            if (extention[1].equals("html") == false) {
+            if (extention.length <= 1 ||extention[1].equals("html") == false) {
                 escolhaArquivo();
                 return;
             } else {
@@ -498,7 +505,6 @@ public class Janela3Controller extends Janela implements Initializable {
 
                 for (int i = 0; i < 24; i++){
                     string = br.readLine();
-                    System.out.println((i+1)+string);
                 }
                 //for acima lê até a linha 24 do meu html
 
@@ -538,7 +544,7 @@ public class Janela3Controller extends Janela implements Initializable {
 
                 }
                 br.close();
-                feedbacklabel.setText("Items importados com sucesso!!!");
+                feedbacklabel.setText(" All items were successfully imported!");
             }
 
         } else {
@@ -551,9 +557,10 @@ public class Janela3Controller extends Janela implements Initializable {
     public void escolhaArquivo(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Invalid File");
-        //alert.setHeaderText("teste");
-        alert.setResizable(true);
+        alert.setHeaderText(null);
+
         alert.setContentText("Please choose only html files");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         alert.showAndWait();
     }
 
@@ -561,20 +568,22 @@ public class Janela3Controller extends Janela implements Initializable {
     public void deleteAll(){
         if(Main.usuario.personalList.totalItems() == 0){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setResizable(true);
+
             alert.setTitle("Invalid operation");
-            //alert.setHeaderText("teste");
+            alert.setHeaderText(null);
             alert.setContentText("There is no data to remove");
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
             alert.showAndWait();
             return;
         }else {
 
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirmation");
-            alert.setHeaderText("Confirm Deletion");
-            alert.setContentText("Are you sure you want delete all items from table?");
-            alert.setResizable(true);
+            alert.setTitle("Confirm deletion");
+            alert.setHeaderText(null);
+            alert.setContentText("Are you sure you want delete all items?");
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+
             ButtonType yesbtn = new ButtonType("Yes");
             ButtonType cancelbtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
@@ -584,7 +593,7 @@ public class Janela3Controller extends Janela implements Initializable {
 
             if (result.get() == yesbtn) {
                 Main.usuario.personalList.list.clear();
-                feedbacklabel.setText("Items removidos com sucesso!!!");
+                feedbacklabel.setText("All items were successfully removed!");
 
             } else {
                 return;
@@ -596,18 +605,20 @@ public class Janela3Controller extends Janela implements Initializable {
     public void customdelete(){
         if(Main.usuario.personalList.totalItems() == 0){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setResizable(true);
+
             alert.setTitle("Invalid operation");
-            //alert.setHeaderText("teste");
+            alert.setHeaderText(null);
             alert.setContentText("There is no data to remove");
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
             alert.showAndWait();
             return;
         }else if(tableView.getSelectionModel().getSelectedItem() == null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setResizable(true);
-            alert.setTitle("No item selected");
-            //alert.setHeaderText("teste");
+
+            alert.setTitle("Invalid operation");
+            alert.setHeaderText(null);
             alert.setContentText("Please select an item to remove");
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
             alert.showAndWait();
             return;
         }else {
@@ -617,10 +628,11 @@ public class Janela3Controller extends Janela implements Initializable {
             for (int i = 0; i < Main.usuario.personalList.totalItems(); i++) {
                 if (name.equals(Main.usuario.personalList.list.get(i).getName())) {
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setResizable(true);
-                    alert.setTitle("Confirmation");
-                    alert.setHeaderText("Confirm Deletion");
-                    alert.setContentText("Do you want to remove" + name + " from your list");
+
+                    alert.setTitle("Confirm deletion");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Do you want to remove" + name + " from your list?");
+                    alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 
                     ButtonType yesbtn = new ButtonType("Yes");
                     ButtonType cancelbtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -631,7 +643,7 @@ public class Janela3Controller extends Janela implements Initializable {
 
                     if (result.get() == yesbtn) {
                         Main.usuario.personalList.list.remove(i);
-                        feedbacklabel.setText(name + " removido com sucesso!!!");
+                        feedbacklabel.setText("   "+ name + " was removed sucessfully!");
 
                     } else {
                         return;
