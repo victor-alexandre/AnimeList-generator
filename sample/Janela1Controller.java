@@ -25,14 +25,27 @@ import java.util.ResourceBundle;
 
 import static sample.Main.setStageScene;
 
+/**
+ * Controller of first window.
+ */
 public class Janela1Controller extends Janela implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) { }
 
+    /**
+     * Method to switch between windows.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void switchwindow(ActionEvent event) throws IOException { }
 
+    /**
+     * Method to show the creator's name.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void about(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -43,7 +56,11 @@ public class Janela1Controller extends Janela implements Initializable {
         alert.showAndWait();
     }
 
-
+    /**
+     * Method to end the application.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void exitProgram(ActionEvent event) throws IOException{
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

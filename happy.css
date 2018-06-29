@@ -37,9 +37,9 @@ body {
   background-attachment: fixed !important;
 
   background-position: left top; 
-  background-image: url("Konachan.com - 265452 sample.jpg");
+  //background-image: url("Konachan.com - 265452 sample.jpg");
   //background-image: url("Konachan.com - 264691 sample.jpg");
-  //background-image: url("Konachan.com - 265456 sample.jpg");
+  background-image: url("Konachan.com - 265456 sample.jpg");
   font-family: "Open Sans", sans-serif;
   padding: 5px 25px;
   font-size: 18px;

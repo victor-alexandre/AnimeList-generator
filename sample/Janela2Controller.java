@@ -24,15 +24,28 @@ import java.util.ResourceBundle;
 
 import static sample.Main.setStageScene;
 
+/**
+ * Controller of second window.
+ */
 public class Janela2Controller extends Janela implements Initializable {
 
     public javafx.scene.control.TextField usernameField;
 
+    /**
+     * Method to initialize the class.
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
+    /**
+     * Method to switch between windows.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void switchwindow(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("janela3.fxml"));
@@ -43,7 +56,11 @@ public class Janela2Controller extends Janela implements Initializable {
 
         enterUser();
     }
-
+    /**
+     * Method to show the creator's name.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void about(ActionEvent event) throws IOException{
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -54,7 +71,9 @@ public class Janela2Controller extends Janela implements Initializable {
         alert.showAndWait();
     }
 
-
+    /**
+     * Method to get the username from usernamefield.
+     */
 
     @FXML
     public void enterUser() {
@@ -62,7 +81,11 @@ public class Janela2Controller extends Janela implements Initializable {
        // System.out.println("username: " + Main.usuario.name);
     }
 
-
+    /**
+     * Method to end the application.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void exitProgram(ActionEvent event) throws IOException{
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

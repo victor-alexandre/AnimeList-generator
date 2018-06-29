@@ -41,6 +41,10 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Controller of the third window.
+ */
+
 public class Janela3Controller extends Janela implements Initializable {
     @FXML private TableView<Anime> tableView;
     @FXML private TableColumn<Anime, String> animecol;
@@ -74,7 +78,11 @@ public class Janela3Controller extends Janela implements Initializable {
 
     private final int maxNumSelected =  1;
 
-
+    /**
+     * Function to initialize the class. Here some items, like table items, labels and buttons, are pre-configured.
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         configureCheckBox(checkBox1);
@@ -105,6 +113,10 @@ public class Janela3Controller extends Janela implements Initializable {
         tableView.setItems(Main.usuario.personalList.list);
     }
 
+    /**
+     * Method to make only one checkbox available to be selected.
+     * @param checkBox
+     */
     private void configureCheckBox(CheckBox checkBox) {
 
         if (checkBox.isSelected()) {
@@ -124,7 +136,9 @@ public class Janela3Controller extends Janela implements Initializable {
         });
     }
 
-
+    /**
+     * Method to go to the second window where user can write its name again.
+     */
     @FXML
     public void changeUsername(){
         Parent root1 = null;
@@ -139,10 +153,19 @@ public class Janela3Controller extends Janela implements Initializable {
     }
 
 
+    /**
+     * Method to switch between windows.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void switchwindow(ActionEvent event) throws IOException {}
 
-
+    /**
+     * Method to show the creator's name.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void about(ActionEvent event) throws IOException{
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -153,6 +176,10 @@ public class Janela3Controller extends Janela implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * Method to add an item in the list. It will verify if there is an equal item, if yes it will ask to user
+     * to overwrite it or not, if its not equal the method will add into the userlist.
+     */
     @FXML
     public void adicionarNaLista(){
         Anime item;
@@ -230,6 +257,9 @@ public class Janela3Controller extends Janela implements Initializable {
 
     }
 
+    /**
+     * Method to clear all text fields (fields where user can write its data).
+     */
     public void clearTexField(){
         animefield.setText("");
         episodesfield.setText("");
@@ -237,16 +267,19 @@ public class Janela3Controller extends Janela implements Initializable {
         scorefield.setText("");
     }
 
+    /**
+     * Method to clear all text fields and clear the feedback label.
+     */
+
     @FXML
     public void clearScreen(){
-        animefield.setText("");
-        episodesfield.setText("");
-        seasonfield.setText("");
-        scorefield.setText("");
+        clearTexField();
         feedbacklabel.setText("");
     }
 
-
+    /**
+     * Method to create an popup to inform user that there are empty fields.
+     */
     public void espacosVazios(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Empty Fields");
@@ -257,7 +290,12 @@ public class Janela3Controller extends Janela implements Initializable {
     }
 
 
-
+    /**
+     * Method to manage when user tries to insert an item that already exists in the list. The method will ask if the user want
+     * to overwrite the item or not.
+     * @param i
+     * @param item
+     */
     public void itemJAexistente(int i, Anime item){
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -291,7 +329,11 @@ public class Janela3Controller extends Janela implements Initializable {
         }
     }
 
-
+    /**
+     * Method to end the application.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void exitProgram(ActionEvent event) throws IOException{
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -315,6 +357,10 @@ public class Janela3Controller extends Janela implements Initializable {
         }
     }
 
+    /**
+     * Method to create an HTML file with user's data
+      * @throws IOException.
+     */
     @FXML
     public void generateList() throws IOException {
         OutputStream os = new FileOutputStream("YourAnimeList.html");
@@ -342,7 +388,7 @@ public class Janela3Controller extends Janela implements Initializable {
                 "  <body>\n" +
                 "    <h1 style=\"font-size:50px;\">"+ Main.usuario.name +"'s AnimeList</h1>\n" +
                 "    <p  style=\"color:#ff0000\">\n" +
-                "      <strong> Total de items: "+ Main.usuario.personalList.totalItems() +  "<br />Total episodes: "+ Main.usuario.personalList.totalEpisodes()+ "</strong> \n" +
+                "      <strong> Total Items: "+ Main.usuario.personalList.totalItems() +  "<br />Total Episodes: "+ Main.usuario.personalList.totalEpisodes()+ "</strong> \n" +
                 "    </p>\n" +
                 "\n" +
                 " <table>\n" +
@@ -373,6 +419,12 @@ public class Janela3Controller extends Janela implements Initializable {
         feedbacklabel.setText("List successfully created!");
     }
 
+
+    /**
+     * Method to import a file with a list. This method will DELETE all of user data and will show the items from
+     * imported list.
+      * @throws IOException
+     */
     @FXML
     public void importList() throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -466,6 +518,11 @@ public class Janela3Controller extends Janela implements Initializable {
 
     }
 
+    /**
+     * Method to import a file with a list. This method will NOT delete user's data, it will increment user's list with data from
+     * imported list.
+     * @throws IOException
+     */
     @FXML
     public void addImportList() throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -553,7 +610,9 @@ public class Janela3Controller extends Janela implements Initializable {
 
     }
 
-
+    /**
+     * Method to show an popup when  user tries to import an invalid file.
+     */
     public void escolhaArquivo(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Invalid File");
@@ -564,6 +623,9 @@ public class Janela3Controller extends Janela implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * Method to delet all items from user list.
+     */
     @FXML
     public void deleteAll(){
         if(Main.usuario.personalList.totalItems() == 0){
@@ -601,6 +663,9 @@ public class Janela3Controller extends Janela implements Initializable {
         }
     }
 
+    /**
+     * Method to delete only the selected item in the table.
+     */
     @FXML
     public void customdelete(){
         if(Main.usuario.personalList.totalItems() == 0){

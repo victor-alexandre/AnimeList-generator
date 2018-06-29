@@ -23,11 +23,20 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Optional;
 
-
+/**
+ * Main Class
+ * The user and the main stage will be defined here.
+ *
+ */
 public class Main extends Application {
     static Usuario usuario = new Usuario("jao");
     static Stage mainstage;
 
+    /**
+     * Method to start main application.
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.mainstage = primaryStage;
@@ -40,15 +49,21 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
 
-
+/**
+ * Function that switchs to the second window after 2s delay .
+ */
         PauseTransition delay = new PauseTransition(Duration.seconds(2));
         delay.setOnFinished(this::callJanela2);
         delay.play();
 
 
+
         primaryStage.setOnCloseRequest(confirmCloseEventHandler);
 
         Button closeButton = new Button("Close Application");
+/**
+ * Set a trigger for when exit button is clicked.
+ */
         closeButton.setOnAction(event ->
                 primaryStage.fireEvent(
                         new WindowEvent(
@@ -64,7 +79,10 @@ public class Main extends Application {
 
     public static void main(String[] args) { launch(args);}
 
-
+    /**
+     * Function to switch to the window where user puts its name.
+     * @param event
+     */
     public void callJanela2(ActionEvent event) {
         Parent root1 = null;
         try {
@@ -77,16 +95,26 @@ public class Main extends Application {
         setStageScene(scene);
     }
 
-
+    /**
+     * Function to set a new scene in the main stage.
+     * @param scene
+     */
     public static void setStageScene(Scene scene){
         mainstage.setScene(scene);
 
     }
 
+    /**
+     * FUnction to get a reference to the main stage.
+     * @return Stage
+     */
     public static Stage getStage(){
         return mainstage;
     }
 
+    /**
+     * Event handler when exit button is clicked.
+     */
     private EventHandler<WindowEvent> confirmCloseEventHandler = event -> {
         Alert closeConfirmation = new Alert(
                 Alert.AlertType.CONFIRMATION,
