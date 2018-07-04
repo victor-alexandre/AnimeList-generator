@@ -23,4 +23,11 @@ public class Usuario {
     public void setName(String name) {
         this.name = name;
     }
+    /**
+     * Method to get user name
+     */
+
+    public String getName() {
+        return this.name;
+    }
 }

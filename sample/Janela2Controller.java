@@ -78,7 +78,7 @@ public class Janela2Controller extends Janela implements Initializable {
     @FXML
     public void enterUser() {
         Main.usuario.setName(usernameField.getText());
-       // System.out.println("username: " + Main.usuario.name);
+        System.out.println("username: " + Main.usuario.name);
     }
 
     /**

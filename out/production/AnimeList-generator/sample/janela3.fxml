@@ -23,6 +23,7 @@
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#importList" text="Import List" />
                   <MenuItem mnemonicParsing="false" onAction="#addImportList" text="Import items" />
+                  <MenuItem mnemonicParsing="false" onAction="#showListOnBrowser" text="Open List in Browser" />
               <MenuItem mnemonicParsing="false" onAction="#exitProgram" text="Close" />
             </items>
           </Menu>
@@ -74,9 +75,9 @@
                   <TextField fx:id="seasonfield" layoutX="71.0" layoutY="49.0" />
                   <TextField fx:id="episodesfield" layoutX="71.0" layoutY="83.0" />
                   <TextField fx:id="scorefield" layoutX="71.0" layoutY="117.0" />
-                  <CheckBox fx:id="checkBox1" layoutX="425.0" layoutY="45.0" mnemonicParsing="false" text="Dark" />
-                  <CheckBox fx:id="checkBox2" layoutX="495.0" layoutY="45.0" mnemonicParsing="false" text="Happy" />
-                  <CheckBox fx:id="checkBox3" layoutX="583.0" layoutY="45.0" mnemonicParsing="false" text="HUEBRBR" />
+                  <CheckBox fx:id="checkBox1" layoutX="425.0" layoutY="45.0" mnemonicParsing="false" text="Normal" />
+                  <CheckBox fx:id="checkBox2" layoutX="510.0" layoutY="45.0" mnemonicParsing="false" text="City" />
+                  <CheckBox fx:id="checkBox3" layoutX="583.0" layoutY="45.0" mnemonicParsing="false" text="Dark" />
                   <Label layoutX="481.0" layoutY="14.0" text="Choose your theme">
                      <tooltip>
                         <Tooltip text="You can select only one theme" />

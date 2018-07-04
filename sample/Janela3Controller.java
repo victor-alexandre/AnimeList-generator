@@ -1,45 +1,33 @@
 package sample;
-import java.awt.Label;
 import java.io.*;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.*;
 
-import javafx.animation.PauseTransition;
+import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
-import javafx.collections.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.beans.binding.Bindings;
-import javafx.beans.binding.IntegerBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import javafx.util.Duration;
-import javafx.util.StringConverter;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Controller of the third window.
@@ -69,7 +57,7 @@ public class Janela3Controller extends Janela implements Initializable {
 
 
     @FXML
-    private javafx.scene.control.Label feedbacklabel;
+    private Label feedbacklabel;
 
     private ObservableSet<CheckBox> selectedCheckBoxes = FXCollections.observableSet();
     private ObservableSet<CheckBox> unselectedCheckBoxes = FXCollections.observableSet();
@@ -77,6 +65,13 @@ public class Janela3Controller extends Janela implements Initializable {
     private IntegerBinding numCheckBoxesSelected = Bindings.size(selectedCheckBoxes);
 
     private final int maxNumSelected =  1;
+
+     File homeDir = new File(System.getProperty("user.home"));
+     File dir = new File(homeDir, "YourAnimeList");
+     File subDir = new File(dir, "src");
+
+
+
 
     /**
      * Function to initialize the class. Here some items, like table items, labels and buttons, are pre-configured.
@@ -111,6 +106,60 @@ public class Janela3Controller extends Janela implements Initializable {
         scorecol.setCellValueFactory(new PropertyValueFactory<Anime, Double>("score"));
 
         tableView.setItems(Main.usuario.personalList.list);
+
+        if (!dir.exists() && !dir.mkdirs()) {
+            try {
+
+                throw new IOException("Unable to create " + dir.getAbsolutePath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        File[] dir_contents = dir.listFiles();
+
+
+        //se já existirem os arquivos não é necessário baixar eles novamente!!
+        if(dir_contents.length < 2) {
+            subDir.mkdir();
+            try {
+                saveUrl("exemplo.html", "https://cdn.discordapp.com/attachments/405086253420118046/462614416068837397/HunteronList.html", subDir);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                saveUrl("city.jpg", "https://cdn.discordapp.com/attachments/449320849812619315/463847793446879233/Konachan.com_-_261020_sample.jpg", subDir);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                saveUrl("normal.jpg", "https://cdn.discordapp.com/attachments/449320849812619315/463847796181565443/Konachan.com-_265452_sample.jpg", subDir);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                saveUrl("dark.jpg", "https://cdn.discordapp.com/attachments/449320849812619315/463847903530844161/Konachan.com-_264691_sample.jpg", subDir);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                saveUrl("city.css", "https://cdn.discordapp.com/attachments/462607449258721290/463854592049020938/city.css", subDir);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                saveUrl("normal.css", "https://cdn.discordapp.com/attachments/462607449258721290/463854597207752715/normal.css", subDir);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                saveUrl("dark.css", "https://cdn.discordapp.com/attachments/462607449258721290/463854594557083649/dark.css", subDir);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     /**
@@ -253,7 +302,7 @@ public class Janela3Controller extends Janela implements Initializable {
         Main.usuario.personalList.list.add(item);
         clearTexField();
 
-        feedbacklabel.setText("      Item successfully added!!!");
+        feedbacklabel.setText(item.getName() + " successfully added!!!");
 
     }
 
@@ -321,7 +370,7 @@ public class Janela3Controller extends Janela implements Initializable {
             //jogadinha pra dar refresh na lista
             tableView.getColumns().get(0).setVisible(false);
             tableView.getColumns().get(0).setVisible(true);
-            feedbacklabel.setText("    Item successfully edited!!!");
+            feedbacklabel.setText(item.getName() + " successfully edited!!!");
         }
 
         else {
@@ -358,65 +407,133 @@ public class Janela3Controller extends Janela implements Initializable {
     }
 
     /**
-     * Method to create an HTML file with user's data
+     * Method to create an HTML file with user's data, in the folder YourAnimeList located in the user's home folder
       * @throws IOException.
      */
     @FXML
     public void generateList() throws IOException {
-        OutputStream os = new FileOutputStream("YourAnimeList.html");
-        OutputStreamWriter osw = new OutputStreamWriter(os);
-        BufferedWriter bw = new BufferedWriter(osw);
+        if(Main.usuario.personalList.totalItems() == 0){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
 
-        String tema;
+            alert.setTitle("Invalid operation");
+            alert.setHeaderText(null);
+            alert.setContentText("Please add some items before creating your list");
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.showAndWait();
+            return;
+        }else {
 
-        if(checkBox1.isSelected()){
-            tema = "normal.css";
-        }else if(checkBox2.isSelected()){
-            tema = "dark.css";
-        }else{
-            tema = "happy.css";
+            File list = new File(dir, Main.usuario.getName()+".html");
+            OutputStream os = new FileOutputStream(list);
+            OutputStreamWriter osw = new OutputStreamWriter(os);
+            BufferedWriter bw = new BufferedWriter(osw);
+
+
+            String tema;
+
+            if (checkBox1.isSelected()) {
+                tema = "normal.css";
+            } else if (checkBox2.isSelected()) {
+                tema = "city.css";
+            } else {
+                tema = "dark.css";
+            }
+
+            bw.write("<!DOCTYPE html>\n" +
+                    "<html>\n" +
+                    "  <head>\n" +
+                    "    <meta charset=\"utf-8\">\n" +
+                    "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+                    "    <title>SUPA ANIME LIST</title>\n" +
+                    "    <link rel=\"stylesheet\" href=\" " +"src/" + tema + "\">\n" +
+                    "  </head>\n" +
+                    "  <body>\n" +
+                    "    <h1 style=\"font-size:50px;\">" + Main.usuario.name + "'s AnimeList</h1>\n" +
+                    "    <p  style=\"color:#ff0000\">\n" +
+                    "      <strong> Total Items: " + Main.usuario.personalList.totalItems() + "<br />Total Episodes: " + Main.usuario.personalList.totalEpisodes() + "</strong> \n" +
+                    "    </p>\n" +
+                    "\n" +
+                    " <table>\n" +
+                    "    <tr style=\"color:#000080; background-color: lightblue;\">\n" +
+                    "      <th><center><b>Anime</b></center></th>\n" +
+                    "      <th><center><b>Seasons</b></center></th>\n" +
+                    "      <th><center><b>Episodes</b></center></th>\n" +
+                    "      <th><center><b>Score</b></center></th>\n" +
+                    "    </tr>\n\n" +
+                    "    ");
+
+            for (int i = 0; i < Main.usuario.personalList.list.size(); i++) {
+                bw.write("<tr>\n");
+                bw.write("    <td><!---->" + Main.usuario.personalList.list.get(i).getName() + "<!----></td>\n");
+                bw.write("    <td><!---->" + Main.usuario.personalList.list.get(i).getSeasons() + "<!----></td>\n");
+                bw.write("    <td><!---->" + Main.usuario.personalList.list.get(i).getEpisodes() + "<!----></td>\n");
+                bw.write("    <td><!---->" + Main.usuario.personalList.list.get(i).getScore() + "<!----></td>\n");
+                bw.write("</tr>\n");
+            }
+
+            bw.write("    </table>\n" +
+                    "  </body>\n" +
+                    "</html>\n" +
+                    "\n" +
+                    "\n");
+
+            bw.close();
+            feedbacklabel.setText("List successfully created!");
+
+
+
         }
+    }
 
-        bw.write("<!DOCTYPE html>\n" +
-                "<html>\n" +
-                "  <head>\n" +
-                "    <meta charset=\"utf-8\">\n" +
-                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-                "    <title>SUPA ANIME LIST</title>\n" +
-                "    <link rel=\"stylesheet\" href=\" "+ tema +"\">\n" +
-                "  </head>\n" +
-                "  <body>\n" +
-                "    <h1 style=\"font-size:50px;\">"+ Main.usuario.name +"'s AnimeList</h1>\n" +
-                "    <p  style=\"color:#ff0000\">\n" +
-                "      <strong> Total Items: "+ Main.usuario.personalList.totalItems() +  "<br />Total Episodes: "+ Main.usuario.personalList.totalEpisodes()+ "</strong> \n" +
-                "    </p>\n" +
-                "\n" +
-                " <table>\n" +
-                "    <tr style=\"color:#000080; background-color: lightblue;\">\n" +
-                "      <th><center><b>Anime</b></center></th>\n" +
-                "      <th><center><b>Temporadas</b></center></th>\n" +
-                "      <th><center><b>Episódios</b></center></th>\n" +
-                "      <th><center><b>Nota</b></center></th>\n" +
-                "    </tr>\n\n" +
-                "    ");
+    /**
+     * Function to open the html file in the default browser.
+     */
+    @FXML
+    public void showListOnBrowser () throws URISyntaxException {
+        if (Main.usuario.personalList.totalItems() == 0) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
 
-        for (int i = 0; i < Main.usuario.personalList.list.size(); i++) {
-            bw.write("<tr>\n");
-            bw.write("    <td><!---->"+Main.usuario.personalList.list.get(i).getName()+"<!----></td>\n");
-            bw.write("    <td><!---->"+Main.usuario.personalList.list.get(i).getSeasons()+"<!----></td>\n");
-            bw.write("    <td><!---->"+Main.usuario.personalList.list.get(i).getEpisodes()+"<!----></td>\n");
-            bw.write("    <td><!---->"+Main.usuario.personalList.list.get(i).getScore()+"<!----></td>\n");
-            bw.write("</tr>\n");
+            alert.setTitle("Invalid operation");
+            alert.setHeaderText(null);
+            alert.setContentText("Please add some items before viewing your list");
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.showAndWait();
+            return;
+        } else {
+            File htmlFile = new File(dir.getPath() + "/" + Main.usuario.getName() + ".html");
+
+            if( Desktop.isDesktopSupported() )
+            {
+                new Thread(() -> {
+                    try {
+                        Desktop.getDesktop().browse( new URI( htmlFile.toURI().toString() ) );
+                    } catch (IOException | URISyntaxException e1) {
+                        e1.printStackTrace();
+                    }
+                }).start();
+            }
+/*
+            Desktop desktop = null;
+            desktop = Desktop.getDesktop();
+            URI url = null;
+
+            Main.getHostServices().showDocument("http://www.yahoo.com");
+
+            HostServices services = getHostServices();
+
+
+            File htmlFile = new File(dir.getPath() + "/" + Main.usuario.getName() + ".html");
+            url = new URI(htmlFile.toURI().toString());
+            Main.getHostServices().showDocument(htmlFile.toURI().toString());
+
+            try {
+                desktop.browse(url);
+            } catch (IOException e) {
+                e.printStackTrace();
+                //return;
+
+            }*/
         }
-
-        bw.write("    </table>\n" +
-                "  </body>\n" +
-                "</html>\n" +
-                "\n" +
-                "\n");
-
-        bw.close();
-        feedbacklabel.setText("List successfully created!");
     }
 
 
@@ -442,8 +559,6 @@ public class Janela3Controller extends Janela implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.get() == yesbtn){
-            Main.usuario.personalList.list.clear();
-            //Deleto todos os dados atuais e trabalho só com a lista importada!!
 
             FileChooser filechoosen = new FileChooser();
 
@@ -460,6 +575,9 @@ public class Janela3Controller extends Janela implements Initializable {
                 return;
             } else {
 
+                Main.usuario.personalList.list.clear();
+                //Deleto todos os dados atuais e trabalho só com a lista importada!!
+
                 FileInputStream is = new FileInputStream(file);
                 InputStreamReader isr = new InputStreamReader(is);
                 BufferedReader br = new BufferedReader(isr);
@@ -468,7 +586,6 @@ public class Janela3Controller extends Janela implements Initializable {
 
                 for (int i = 0; i < 24; i++){
                     string = br.readLine();
-                    System.out.println((i+1)+string);
                 }
                 //for acima lê até a linha 24 do meu html
 
@@ -480,7 +597,7 @@ public class Janela3Controller extends Janela implements Initializable {
                     int episodes;
                     int seasons;
                     double score;
-                    System.out.println("\n\n\n\n"+string);
+
 
                     name = parts[1];
 
@@ -708,7 +825,7 @@ public class Janela3Controller extends Janela implements Initializable {
 
                     if (result.get() == yesbtn) {
                         Main.usuario.personalList.list.remove(i);
-                        feedbacklabel.setText("   "+ name + " was removed sucessfully!");
+                        feedbacklabel.setText( name + " was sucessfully removed!");
 
                     } else {
                         return;
@@ -719,5 +836,40 @@ public class Janela3Controller extends Janela implements Initializable {
             }
         }
     }
+
+
+    /**
+     * Method to download the images and css files, and put them in the directory of the user animelist
+     * @param filename
+     * @param urlString
+     * @param dir
+     * @throws MalformedURLException
+     * @throws IOException
+     */
+    public void saveUrl(final String filename, final String urlString, File dir)
+            throws MalformedURLException, IOException {
+        BufferedInputStream in = null;
+
+
+        FileOutputStream fout = null;
+        try {
+            in = new BufferedInputStream(new URL(urlString).openStream());
+            fout = new FileOutputStream(dir.toPath()+ "/"+filename);
+
+            final byte data[] = new byte[1024];
+            int count;
+            while ((count = in.read(data, 0, 1024)) != -1) {
+                fout.write(data, 0, count);
+            }
+        } finally {
+            if (in != null) {
+                in.close();
+            }
+            if (fout != null) {
+                fout.close();
+            }
+        }
+    }
+
 
 }

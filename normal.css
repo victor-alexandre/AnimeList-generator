@@ -37,15 +37,13 @@ body {
   background-attachment: fixed !important;
 
   background-position: left top; 
-  background-image: url("Konachan.com - 265452 sample.jpg");
-  //background-image: url("Konachan.com - 264691 sample.jpg");
-  //background-image: url("Konachan.com - 265456 sample.jpg");
+  background-image: url("normal.jpg");
   
   font-family: "Open Sans", sans-serif;
   padding: 5px 25px;
   font-size: 18px;
   margin: 0;
-  color:  #000000
+  color:  #ff00ff;
 
 h1 {
   font-family: "Merriweather", serif;

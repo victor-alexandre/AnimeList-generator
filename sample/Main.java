@@ -2,6 +2,7 @@ package sample;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -49,9 +50,9 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
 
-/**
- * Function that switchs to the second window after 2s delay .
- */
+
+ // Function that switchs to the second window after 2s delay .
+
         PauseTransition delay = new PauseTransition(Duration.seconds(2));
         delay.setOnFinished(this::callJanela2);
         delay.play();
@@ -61,9 +62,9 @@ public class Main extends Application {
         primaryStage.setOnCloseRequest(confirmCloseEventHandler);
 
         Button closeButton = new Button("Close Application");
-/**
- * Set a trigger for when exit button is clicked.
- */
+
+//  Set a trigger for when exit button is clicked.
+
         closeButton.setOnAction(event ->
                 primaryStage.fireEvent(
                         new WindowEvent(
