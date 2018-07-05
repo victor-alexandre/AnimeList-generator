@@ -74,9 +74,10 @@ public class Janela3Controller extends Janela implements Initializable {
 
 
     /**
-     * Function to initialize the class. Here some items, like table items, labels and buttons, are pre-configured.
-     * @param location
-     * @param resources
+     * Function to initialize the class. Here some items, like table items, labels and buttons, folders are pre-configured.
+     * Also, in this method if there is no folder YourAnimeList, the program will create it, and will download some files automatically
+     * @param location -
+     * @param resources -
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -119,11 +120,11 @@ public class Janela3Controller extends Janela implements Initializable {
 
 
         //se já existirem os arquivos não é necessário baixar eles novamente!!
-        if(dir_contents.length < 2) {
+        if(dir_contents.length == 0) {
             subDir.mkdir();
 
             try {
-                saveUrl("exemplo.html", "https://cdn.discordapp.com/attachments/405086253420118046/462614416068837397/HunteronList.html", subDir);
+                saveUrl("example.html", "https://cdn.discordapp.com/attachments/450674883030941716/464514484711456768/teste.html", dir);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -166,7 +167,7 @@ public class Janela3Controller extends Janela implements Initializable {
 
     /**
      * Method to make only one checkbox available to be selected.
-     * @param checkBox
+     * @param checkBox -  The box where you can select it with a check mark
      */
     private void configureCheckBox(CheckBox checkBox) {
 
@@ -206,16 +207,16 @@ public class Janela3Controller extends Janela implements Initializable {
 
     /**
      * Method to switch between windows.
-     * @param event
-     * @throws IOException
+     * @param event - The event is when a function or a button call this method
+     * @throws IOException -
      */
     @FXML
     public void switchwindow(ActionEvent event) throws IOException {}
 
     /**
      * Method to show the creator's name.
-     * @param event
-     * @throws IOException
+     * @param event - The event is when the user clicks in the About button
+     * @throws IOException -
      */
     @FXML
     public void about(ActionEvent event) throws IOException{
@@ -344,8 +345,8 @@ public class Janela3Controller extends Janela implements Initializable {
     /**
      * Method to manage when user tries to insert an item that already exists in the list. The method will ask if the user want
      * to overwrite the item or not.
-     * @param i
-     * @param item
+     * @param i - the position in the arraylist where the repeated item is.
+     * @param item - the item that is repeated
      */
     public void itemJAexistente(int i, Anime item){
 
@@ -382,8 +383,8 @@ public class Janela3Controller extends Janela implements Initializable {
 
     /**
      * Method to end the application.
-     * @param event
-     * @throws IOException
+     * @param event - The event is when the user clicks in the exit button
+     * @throws IOException -
      */
     @FXML
     public void exitProgram(ActionEvent event) throws IOException{
@@ -410,7 +411,7 @@ public class Janela3Controller extends Janela implements Initializable {
 
     /**
      * Method to create an HTML file with user's data, in the folder YourAnimeList located in the user's home folder
-      * @throws IOException.
+     * @throws IOException -
      */
     @FXML
     public void generateList() throws IOException {
@@ -491,7 +492,7 @@ public class Janela3Controller extends Janela implements Initializable {
      * Function to open the html file in the default browser.
      */
     @FXML
-    public void showListOnBrowser () throws URISyntaxException {
+    public void showListOnBrowser () {
         if (Main.usuario.personalList.totalItems() == 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
 
@@ -534,7 +535,8 @@ public class Janela3Controller extends Janela implements Initializable {
                 e.printStackTrace();
                 //return;
 
-            }*/
+            }
+*/
         }
     }
 
@@ -542,7 +544,7 @@ public class Janela3Controller extends Janela implements Initializable {
     /**
      * Method to import a file with a list. This method will DELETE all of user data and will show the items from
      * imported list.
-      * @throws IOException
+     * @throws IOException -
      */
     @FXML
     public void importList() throws IOException {
@@ -640,7 +642,7 @@ public class Janela3Controller extends Janela implements Initializable {
     /**
      * Method to import a file with a list. This method will NOT delete user's data, it will increment user's list with data from
      * imported list.
-     * @throws IOException
+     * @throws IOException -
      */
     @FXML
     public void addImportList() throws IOException {
@@ -842,11 +844,11 @@ public class Janela3Controller extends Janela implements Initializable {
 
     /**
      * Method to download the images and css files, and put them in the directory of the user animelist
-     * @param filename
-     * @param urlString
-     * @param dir
-     * @throws MalformedURLException
-     * @throws IOException
+     * @param filename - name of the file that will be saved after the download
+     * @param urlString - url of the download
+     * @param dir - directory where the file will be saved
+     * @throws MalformedURLException -
+     * @throws IOException -
      */
     public void saveUrl(final String filename, final String urlString, File dir)
             throws MalformedURLException, IOException {

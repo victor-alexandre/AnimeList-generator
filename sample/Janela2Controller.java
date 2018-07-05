@@ -33,8 +33,8 @@ public class Janela2Controller extends Janela implements Initializable {
 
     /**
      * Method to initialize the class.
-     * @param location
-     * @param resources
+     * @param location -
+     * @param resources -
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,8 +43,8 @@ public class Janela2Controller extends Janela implements Initializable {
 
     /**
      * Method to switch between windows.
-     * @param event
-     * @throws IOException
+     * @param event - The event is when a function or a button call this method
+     * @throws IOException -
      */
     @FXML
     public void switchwindow(ActionEvent event) throws IOException {
@@ -58,8 +58,8 @@ public class Janela2Controller extends Janela implements Initializable {
     }
     /**
      * Method to show the creator's name.
-     * @param event
-     * @throws IOException
+     * @param event - The event is when the user clicks in the About button
+     * @throws IOException -
      */
     @FXML
     public void about(ActionEvent event) throws IOException{
@@ -83,8 +83,8 @@ public class Janela2Controller extends Janela implements Initializable {
 
     /**
      * Method to end the application.
-     * @param event
-     * @throws IOException
+     * @param event- The event is when the user clicks in the exit button
+     * @throws IOException -
      */
     @FXML
     public void exitProgram(ActionEvent event) throws IOException{

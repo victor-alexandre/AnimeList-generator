@@ -9,7 +9,8 @@ public class Usuario {
 
     /**
      * Usuario constructor.
-     * @param name
+     * @param name - name of the User
+     *
      */
     public Usuario(String name){
         this.name = name;
@@ -17,16 +18,17 @@ public class Usuario {
 
     /**
      * Method to set user name
-     * @param name
+     * @param name - name of the User
      */
 
     public void setName(String name) {
         this.name = name;
     }
+
     /**
      * Method to get user name
+     * @return  name of the user
      */
-
     public String getName() {
         return this.name;
     }

@@ -17,10 +17,10 @@ public class Anime {
 
     /**
      * Anime constructor.
-     * @param name
-     * @param episodes
-     * @param seasons
-     * @param score
+     * @param name - name of the anime
+     * @param episodes - number of episodes of the anime
+     * @param seasons - number of seasons of the anime
+     * @param score - score that user has given to the anime
      */
     public Anime(String name, int episodes, int seasons, double score) {
         this.name = new SimpleStringProperty(name);
@@ -31,56 +31,69 @@ public class Anime {
 
     /**
      * Method to get anime name.
-     * @return
+     * @return anime name
      */
     public String getName() {
         return name.get();
     }
+
     /**
      * Method to set anime name.
-     * @return
+     * @param name - new anime name
      */
     public void setName(String name) {
         this.name = new SimpleStringProperty(name);
     }
+
+
     /**
      * Method to get anime number of episodes.
-     * @return
+     * @return episodes of the anime
      */
     public int getEpisodes() {
         return episodes.get();
     }
+
+
     /**
      * Method to set anime number of episodes.
-     * @return
+     * @param episodes - number of episodes
      */
     public void setEpisodes(int episodes) {
         this.episodes = new SimpleIntegerProperty(episodes);
     }
+
+
     /**
      * Method to get anime number of seasons.
-     * @return
+     * @return number of seasons
      */
     public int getSeasons() {
         return seasons.get();
     }
+
+
     /**
      * Method to set anime number of seasons.
-     * @return
+     * @param seasons - number of seasons
      */
     public void setSeasons(int seasons) {
         this.seasons = new SimpleIntegerProperty(seasons);
     }
+
+
     /**
      * Method to get anime score.
-     * @return
+     * @return score
      */
     public double getScore() {
         return score.get();
     }
+
+
     /**
      * Method to set anime score.
-     * @return
+     * @param score - score of the anime
      */
     public void setScore(double score) {
         this.score = new SimpleDoubleProperty(score);
@@ -88,7 +101,7 @@ public class Anime {
 
     /**
      * Method to print anime info.
-     * @return
+     * @return String - with anime information
      */
     @Override
     public String toString() {

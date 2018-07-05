@@ -6,7 +6,7 @@ package sample;
 public class Excecoes extends RuntimeException{
     /**
      * Excecoes constructor.
-     * @param msg
+     * @param msg - message with the error name
      */
 
     public Excecoes(String msg) {

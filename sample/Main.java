@@ -33,13 +33,13 @@ import java.util.Optional;
  *
  */
 public class Main extends Application {
-    static Usuario usuario = new Usuario("jao");
+    static Usuario usuario = new Usuario("testname");
     static Stage mainstage;
 
     /**
      * Method to start main application.
-     * @param primaryStage
-     * @throws Exception
+     * @param primaryStage - Stage where the application is running
+     * @throws Exception -
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -86,7 +86,7 @@ public class Main extends Application {
 
     /**
      * Function to switch to the window where user puts its name.
-     * @param event
+     * @param event - the event is a time delay of 2s
      */
     public void callJanela2(ActionEvent event) {
         Parent root1 = null;
@@ -102,7 +102,7 @@ public class Main extends Application {
 
     /**
      * Function to set a new scene in the main stage.
-     * @param scene
+     * @param scene - scene that the application is showing in the moment
      */
     public static void setStageScene(Scene scene){
         mainstage.setScene(scene);
@@ -111,7 +111,7 @@ public class Main extends Application {
 
     /**
      * FUnction to get a reference to the main stage.
-     * @return Stage
+     * @return Stage - Stage of the application
      */
     public static Stage getStage(){
         return mainstage;
