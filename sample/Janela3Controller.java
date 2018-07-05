@@ -121,6 +121,7 @@ public class Janela3Controller extends Janela implements Initializable {
         //se já existirem os arquivos não é necessário baixar eles novamente!!
         if(dir_contents.length < 2) {
             subDir.mkdir();
+
             try {
                 saveUrl("exemplo.html", "https://cdn.discordapp.com/attachments/405086253420118046/462614416068837397/HunteronList.html", subDir);
             } catch (IOException e) {
@@ -158,6 +159,7 @@ public class Janela3Controller extends Janela implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
         }
 
     }

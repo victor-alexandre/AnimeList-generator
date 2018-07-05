@@ -4,6 +4,7 @@
 
 
 table {
+    position: right top;
     font-family: arial, sans-serif;
     font-weight: 600;
     border-collapse: collapse;
@@ -37,14 +38,12 @@ body {
   background-attachment: fixed !important;
 
   background-position: left top; 
-  //background-image: url("Konachan.com - 265452 sample.jpg");
-  background-image: url("Konachan.com - 264691 sample.jpg");
-  //background-image: url("Konachan.com - 265456 sample.jpg");
+  background-image: url("city.jpg");
   font-family: "Open Sans", sans-serif;
   padding: 5px 25px;
   font-size: 18px;
   margin: 0;
-  color:  #00FA9A;
+  color:  #ff3399;
 }
 
 h1 {

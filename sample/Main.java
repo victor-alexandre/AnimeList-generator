@@ -14,13 +14,16 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -44,12 +47,13 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("janela1.fxml"));
         Parent root = loader.load();
-        primaryStage.setTitle("Ranking List");
+        primaryStage.setTitle("Anime List");
         Scene scene1 = new Scene(root);
         primaryStage.setScene(scene1);
         primaryStage.setResizable(false);
+        //primaryStage.getIcons().add(new Image("icon.png"));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("icon.png")));
         primaryStage.show();
-
 
  // Function that switchs to the second window after 2s delay .
 
