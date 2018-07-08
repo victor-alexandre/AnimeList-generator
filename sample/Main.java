@@ -1,13 +1,10 @@
 package sample;
-import javafx.animation.FadeTransition;
+
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
-import javafx.application.HostServices;
-import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -19,11 +16,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Optional;
 

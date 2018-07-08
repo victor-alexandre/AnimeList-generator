@@ -1,12 +1,10 @@
 package sample;
+
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
-
-import javafx.application.Application;
-import javafx.application.HostServices;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
 import javafx.fxml.FXML;
@@ -25,7 +23,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
-
 import java.awt.*;
 import java.net.URL;
 
@@ -229,7 +226,7 @@ public class Janela3Controller extends Janela implements Initializable {
     }
 
     /**
-     * Method to add an item in the list. It will verify if there is an equal item, if yes it will ask to user
+     * Method to add an item in the list. It will verify if there is an equal item, if yes it will ask user
      * to overwrite it or not, if its not equal the method will add into the userlist.
      */
     @FXML
@@ -310,7 +307,7 @@ public class Janela3Controller extends Janela implements Initializable {
     }
 
     /**
-     * Method to clear all text fields (fields where user can write its data).
+     * Method to clear all text fields (fields where user can write anime's data).
      */
     public void clearTexField(){
         animefield.setText("");
@@ -504,6 +501,19 @@ public class Janela3Controller extends Janela implements Initializable {
             return;
         } else {
             File htmlFile = new File(dir.getPath() + "/" + Main.usuario.getName() + ".html");
+
+            if(!htmlFile.exists()){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("File not found");
+                alert.setHeaderText(null);
+                alert.setContentText("Please generate your list before viewing it in browser." +
+                        " Possible reasons for this: 1º User changed its name, but forgot to generate the list again. " +
+                        "2º The list was not created sucessfully.");
+
+                alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+                alert.showAndWait();
+                return;
+            }
 
             if( Desktop.isDesktopSupported() )
             {
@@ -843,7 +853,7 @@ public class Janela3Controller extends Janela implements Initializable {
 
 
     /**
-     * Method to download the images and css files, and put them in the directory of the user animelist
+     * Method to download the images and css files, and store them in the directory of the user's animelist
      * @param filename - name of the file that will be saved after the download
      * @param urlString - url of the download
      * @param dir - directory where the file will be saved
