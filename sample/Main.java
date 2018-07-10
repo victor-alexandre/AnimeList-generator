@@ -102,7 +102,7 @@ public class Main extends Application {
     }
 
     /**
-     * FUnction to get a reference to the main stage.
+     * Function to get a reference to the main stage.
      * @return Stage - Stage of the application
      */
     public static Stage getStage(){

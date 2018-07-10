@@ -503,12 +503,11 @@ public class Janela3Controller extends Janela implements Initializable {
             File htmlFile = new File(dir.getPath() + "/" + Main.usuario.getName() + ".html");
 
             if(!htmlFile.exists()){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("File not found");
                 alert.setHeaderText(null);
-                alert.setContentText("Please generate your list before viewing it in browser." +
-                        " Possible reasons for this: 1º User changed its name, but forgot to generate the list again. " +
-                        "2º The list was not created sucessfully.");
+                alert.setContentText("There is no list associated with current username. Please generate the list " +
+                        "before trying to view it in the browser.");
 
                 alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
                 alert.showAndWait();
