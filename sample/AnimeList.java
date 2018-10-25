@@ -13,13 +13,13 @@ public class AnimeList {
     /**
      * Animelist constructor
      */
-    public AnimeList(){ super(); }
+    public AnimeList() { super(); }
 
     /**
      * Method to return number of items in the list
      * @return the total of items stored in the list
      */
-    public int totalItems(){
+    public int totalItems() {
         return list.size();
     }
 
@@ -27,10 +27,10 @@ public class AnimeList {
      * Method to return the number of all episodes stored in the list
      * @return the total of episodes stored in the list
      */
-    public int totalEpisodes(){
+    public int totalEpisodes() {
         int episodes = 0;
 
-        for(int i = 0; i < list.size(); i++){
+        for(int i = 0; i < list.size(); i++) {
             episodes = episodes + list.get(i).getEpisodes();
         }
 
