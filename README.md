@@ -8,3 +8,5 @@ You just have to download and run the AnimeList-generator.jar file here https://
 
 PS: To run it you must have java 10 runtime environment installed in your computer. You can download it here: http://www.oracle.com/technetwork/java/javase/downloads/jre10-downloads-4417026.html
 
+PS 2: The first time running it will be a bit slow because the application will download te html templates. 
+
