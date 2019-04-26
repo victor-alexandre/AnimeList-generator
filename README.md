@@ -6,7 +6,7 @@ It basically will works in the following way: user types some data(anime name, s
 
 You just have to download and run the AnimeList-generator.jar file here https://github.com/victor-alexandre/AnimeList-generator/tree/master/out/artifacts/AnimeList_generator_jar
 
-PS: To run it you must have java 10 runtime environment installed in your computer. You can download it here: http://www.oracle.com/technetwork/java/javase/downloads/jre10-downloads-4417026.html
+PS: To run it you must have java 10 runtime environment installed in your computer. You can download it here: https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase10-4425482.html
 
 PS 2: The first time running it will be a bit slow because the application will download the html templates. 
 
